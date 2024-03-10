@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import "@/i18n";
 import NavigationBar from "@/ui/NavigationBar";
 import OptionsBar from "@/ui/OptionsBar";
 import AllContexts from "@/contexts/all";
