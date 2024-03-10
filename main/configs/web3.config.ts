@@ -9,7 +9,10 @@ export const config = createConfig({
     injected(),
     coinbaseWallet({ appName: "Moniswap" }),
     safe(),
-    walletConnect({ projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string })
+    walletConnect({
+      projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string,
+      relayUrl: "wss://relay.walletconnect.com"
+    })
   ],
   client({ chain }) {
     return createClient({ chain, transport: http() });
