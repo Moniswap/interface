@@ -2,23 +2,29 @@
 
 import { RootState } from "@/configs/store";
 import { changeTheme } from "@/configs/store/slices/themeSlice";
-import { __CHAIN_IDS, __CHAIN_INFO__ } from "@/constants";
+import { __CHAIN_IDS__, __CHAIN_INFO__, __LANGUAGES__, __STRINGS__ } from "@/constants";
 import Image from "next/image";
 import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
 import { FiMoon, FiSun } from "react-icons/fi";
+import { PiGlobeSimple } from "react-icons/pi";
 import { useDispatch, useSelector } from "react-redux";
 import { useChainId, useChains, useSwitchChain } from "wagmi";
 
 function OptionsBar() {
   const chains = useChains();
   const chainId = useChainId();
-  const chainInfo = useMemo(() => __CHAIN_INFO__[chainId ?? __CHAIN_IDS.bera_testnet], [chainId]);
+  const chainInfo = useMemo(() => __CHAIN_INFO__[chainId ?? __CHAIN_IDS__.bera_testnet], [chainId]);
   const [chainSwitchOpen, setChainSwitchOpen] = useState(false);
   const [themeSwitchOpen, setThemeSwitchOpen] = useState(false);
+  const [languageSwitchOpen, setLanguageSwitchOpen] = useState(false);
   const { switchChain } = useSwitchChain();
   const { currentTheme } = useSelector((state: RootState) => state.theme);
   const dispatch = useDispatch();
+
+  const { i18n } = useTranslation();
+  const currentLanguage = useMemo(() => __LANGUAGES__[i18n.language], [i18n.language]);
   return (
     <div className="w-full md:min-h-screen md:border border-[#c6c6c6] flex flex-row md:flex-col justify-between md:justify-start items-start md:items-center px-2 md:px-5 py-2 md:py-5 gap-6">
       <details
@@ -45,7 +51,7 @@ function OptionsBar() {
               <a
                 onClick={() => {
                   switchChain({ chainId: chain.id });
-                  setChainSwitchOpen(false)
+                  setChainSwitchOpen(false);
                 }}
                 className={`flex justify-start items-center gap-3 ${
                   chain.id === parseInt(chainInfo.chainIDHex) && "bg-[#fff8b9] font-[500]"
@@ -109,7 +115,7 @@ function OptionsBar() {
                 <a
                   onClick={() => {
                     dispatch(changeTheme("dark"));
-                    setThemeSwitchOpen(false)
+                    setThemeSwitchOpen(false);
                   }}
                   className={`flex justify-start items-center gap-3 ${
                     currentTheme === "dark" && "bg-[#fff8b9] font-[500]"
@@ -117,6 +123,90 @@ function OptionsBar() {
                 >
                   <FiMoon size={25} />
                   <span className="capitalize text-sm md:text-lg font-[400] text-[#000]">dark</span>
+                </a>
+              </li>
+            </ul>
+          </details>
+        </div>
+
+        <div className="flex flex-col justify-start items-start gap-3 w-full">
+          <span className="capitalize font-[400] text-[#9a9888] text-sm md:text-lg">language</span>
+          <details
+            className="dropdown w-full"
+            open={languageSwitchOpen}
+            onToggle={event => setLanguageSwitchOpen(event.currentTarget.open)}
+          >
+            <summary className="m-0 w-full btn btn-ghost md:min-h-32 flex flex-col justify-start items-start gap-12 bg-[#e7e2b6] px-4 py-4 rounded-[5px]">
+              <div className="flex justify-between items-center w-full">
+                <PiGlobeSimple size={23} />
+                {languageSwitchOpen ? <BiChevronUp size={20} /> : <BiChevronDown size={20} />}
+              </div>
+              <span className="capitalize font-[400] text-[#47473f] text-sm">{currentLanguage}</span>
+            </summary>
+            <ul className="p-2 w-full dropdown-content menu rounded-[5px] z-[1] bg-[#e7e2b6] menu-lg shadow-lg border border-[#47473f]">
+              <li className="menu-title">
+                <div className="flex justify-between items-center w-full">
+                  <span className="capitalize font-[400] text-[#9a9888] text-sm md:text-lg">change language</span>
+                  <button className="btn btn-ghost btn-square btn-sm" onClick={() => setLanguageSwitchOpen(false)}>
+                    <BiChevronUp size={20} />
+                  </button>
+                </div>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    i18n.changeLanguage("en").then(() => {
+                      setLanguageSwitchOpen(false);
+                    });
+                  }}
+                  className={`flex justify-start items-center gap-3 ${
+                    i18n.language === "en" && "bg-[#fff8b9] font-[500]"
+                  }`}
+                >
+                  <span className="uppercase text-sm md:text-lg font-[600] text-[#000]">
+                    {__STRINGS__.__lng__.english}
+                  </span>
+                  <span className="capitalize text-sm md:text-lg font-[400] text-[#000]">
+                    {__LANGUAGES__[__STRINGS__.__lng__.english]}
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    i18n.changeLanguage("fr").then(() => {
+                      setLanguageSwitchOpen(false);
+                    });
+                  }}
+                  className={`flex justify-start items-center gap-3 ${
+                    i18n.language === "fr" && "bg-[#fff8b9] font-[500]"
+                  }`}
+                >
+                  <span className="uppercase text-sm md:text-lg font-[600] text-[#000]">
+                    {__STRINGS__.__lng__.francais}
+                  </span>
+                  <span className="capitalize text-sm md:text-lg font-[400] text-[#000]">
+                    {__LANGUAGES__[__STRINGS__.__lng__.francais]}
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a
+                  onClick={() => {
+                    i18n.changeLanguage("es").then(() => {
+                      setLanguageSwitchOpen(false);
+                    });
+                  }}
+                  className={`flex justify-start items-center gap-3 ${
+                    i18n.language === "es" && "bg-[#fff8b9] font-[500]"
+                  }`}
+                >
+                  <span className="uppercase text-sm md:text-lg font-[600] text-[#000]">
+                    {__STRINGS__.__lng__.español}
+                  </span>
+                  <span className="capitalize text-sm md:text-lg font-[400] text-[#000]">
+                    {__LANGUAGES__[__STRINGS__.__lng__.español]}
+                  </span>
                 </a>
               </li>
             </ul>

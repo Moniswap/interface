@@ -1,19 +1,98 @@
 import { toHex } from "viem";
 
-export const __CHAIN_IDS = {
+export const __CHAIN_IDS__ = {
   bera_testnet: 80085,
   sepolia: 11155111
 };
 
 export const __CHAIN_INFO__ = {
-  [__CHAIN_IDS.bera_testnet]: {
+  [__CHAIN_IDS__.bera_testnet]: {
     name: "bera testnet",
     image: "/images/berachain.svg",
-    chainIDHex: toHex(__CHAIN_IDS.bera_testnet)
+    chainIDHex: toHex(__CHAIN_IDS__.bera_testnet),
+    isTestnet: true
   },
-  [__CHAIN_IDS.sepolia]: {
+  [__CHAIN_IDS__.sepolia]: {
     name: "Ethereum Sepolia",
     image: "/images/ethereum.svg",
-    chainIDHex: toHex(__CHAIN_IDS.sepolia)
+    chainIDHex: toHex(__CHAIN_IDS__.sepolia),
+    isTestnet: true
   }
+};
+
+export const __STRINGS__ = {
+  app_title: "moniswap",
+  __networks__: {
+    mainnet: "mainnet",
+    testnet: "testnet"
+  },
+  __link_titles__: {
+    swap: "swap",
+    overview: "overview",
+    pools: "pools",
+    vote: "vote",
+    lock: "lock",
+    incentivize: "incentivize",
+    launchpad: "launchpad",
+    early_access: "early access",
+    nfts: "NFTs"
+  },
+  __actions__: {
+    connect_wallet: "connect wallet",
+    provide_feedback: "provide feedback"
+  },
+  __misc__: {
+    v: "Moniswap v1.0.0"
+  },
+  __lng__: {
+    francais: "fr",
+    english: "en",
+    español: "es"
+  }
+};
+
+export const __TRANSLATION__ = {
+  en: {
+    translation: {
+      [__STRINGS__.app_title]: __STRINGS__.app_title,
+      ...__STRINGS__.__link_titles__,
+      ...__STRINGS__.__actions__,
+      ...__STRINGS__.__misc__
+    }
+  },
+  fr: {
+    translation: {
+      [__STRINGS__.app_title]: __STRINGS__.app_title,
+      [__STRINGS__.__link_titles__.swap]: "échanger",
+      [__STRINGS__.__link_titles__.early_access]: "accès anticipé",
+      [__STRINGS__.__link_titles__.overview]: "vue générale de",
+      [__STRINGS__.__link_titles__.incentivize]: "inciter",
+      [__STRINGS__.__link_titles__.lock]: "coffres",
+      [__STRINGS__.__link_titles__.pools]: "liquidité",
+      [__STRINGS__.__link_titles__.vote]: "vote",
+      [__STRINGS__.__actions__.connect_wallet]: "connecter le portefeuille",
+      [__STRINGS__.__actions__.provide_feedback]: "donner votre avis",
+      [__STRINGS__.__link_titles__.launchpad]: "rampe de lancement"
+    }
+  },
+  es: {
+    translation: {
+      [__STRINGS__.__link_titles__.swap]: "intercambio",
+      [__STRINGS__.__link_titles__.early_access]: "acceso temprano",
+      [__STRINGS__.__link_titles__.overview]: "descripción general",
+      [__STRINGS__.__link_titles__.incentivize]: "incentivar",
+      [__STRINGS__.__link_titles__.lock]: "caja de seguridad",
+      [__STRINGS__.__link_titles__.pools]: "liquidez",
+      [__STRINGS__.__link_titles__.vote]: "votar",
+      [__STRINGS__.__actions__.connect_wallet]: "conectar billetera",
+      [__STRINGS__.__actions__.provide_feedback]: "dar opinion",
+      [__STRINGS__.__link_titles__.launchpad]: "plataforma de lanzamiento"
+    }
+  }
+};
+
+export const __LANGUAGES__ = {
+  [__STRINGS__.__lng__.francais]: "français",
+  [__STRINGS__.__lng__.english]: "english",
+  [__STRINGS__.__lng__.español]: "español"
 };

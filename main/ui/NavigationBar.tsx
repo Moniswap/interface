@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import React from "react";
+import React, { useMemo } from "react";
 import { LuDoorOpen, LuVote, LuWallet } from "react-icons/lu";
 import { RiTokenSwapLine } from "react-icons/ri";
 import { GrOverview } from "react-icons/gr";
@@ -13,6 +13,9 @@ import { BiCoinStack, BiLogoDiscordAlt } from "react-icons/bi";
 import { PiRocketLaunchLight } from "react-icons/pi";
 import { TfiGallery } from "react-icons/tfi";
 import { FaTelegramPlane } from "react-icons/fa";
+import { __CHAIN_IDS__, __CHAIN_INFO__, __STRINGS__ } from "@/constants";
+import { useChainId } from "wagmi";
+import { useTranslation } from "react-i18next";
 
 const ActiveLink: React.FC<LinkProps & { children: any }> = ({ href, children, ...props }) => {
   const pathname = usePathname();
@@ -30,81 +33,88 @@ const ActiveLink: React.FC<LinkProps & { children: any }> = ({ href, children, .
 };
 
 function NavigationBar() {
+  const chainId = useChainId();
+  const chainInfo = useMemo(() => __CHAIN_INFO__[chainId ?? __CHAIN_IDS__.bera_testnet], [chainId]);
+  const { t } = useTranslation();
   return (
     <div className="w-full md:min-h-screen md:border border-[#c6c6c6] flex flex-row md:flex-col justify-between md:justify-start items-start md:items-center px-2 md:px-5 py-2 md:py-5 gap-6">
       <div className="flex flex-col gap-[1px] w-full">
         <div className="flex justify-start items-center gap-4">
           <Image src="/images/logo.svg" alt="logo" height={55} width={55} />
-          <span className="md:text-4xl text-lg uppercase font-[600]">moniswap</span>
+          <span className="md:text-4xl text-lg uppercase font-[600]">{__STRINGS__.app_title}</span>
         </div>
         <span className="capitalize hidden md:block text-right text-[#bab300] text-xs md:text-lg font-[400]">
-          testnet
+          {chainInfo.isTestnet ? __STRINGS__.__networks__.testnet : __STRINGS__.__networks__.mainnet}
         </span>
       </div>
       <button className="w-full flex justify-start items-center gap-3 bg-[#e7e2b6] capitalize px-2 py-2 rounded-[5px] btn border-none">
         <LuWallet size={27} />
-        <span className="capitalize font-[400] md:text-xl text-center">connect wallet</span>
+        <span className="capitalize font-[400] md:text-lg text-center">
+          {t(__STRINGS__.__actions__.connect_wallet)}
+        </span>
       </button>
       <ul className="menu menu-lg min-w-full px-0">
         <li>
           <ActiveLink href="/swap">
             <RiTokenSwapLine size={27} />
-            <span className="capitalize">swap</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.swap)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/overview">
             <GrOverview size={27} />
-            <span className="capitalize">overview</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.overview)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/pools">
             <FaDroplet size={27} />
-            <span className="capitalize">pools</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.pools)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/vote">
             <LuVote size={27} />
-            <span className="capitalize">vote</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.vote)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/lock">
             <FiLock size={27} />
-            <span className="capitalize">lock</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.lock)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/incentivize">
             <BiCoinStack size={27} />
-            <span className="capitalize">incentivize</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.incentivize)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/launchpad">
             <PiRocketLaunchLight size={27} />
-            <span className="capitalize">launchpad</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.launchpad)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/early-access">
             <LuDoorOpen size={27} />
-            <span className="capitalize">early access</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.early_access)}</span>
           </ActiveLink>
         </li>
         <li>
           <ActiveLink href="/nfts">
             <TfiGallery size={27} />
-            <span className="capitalize">NFTs</span>
+            <span className="capitalize">{t(__STRINGS__.__link_titles__.nfts)}</span>
           </ActiveLink>
         </li>
       </ul>
       <div className="flex flex-col justify-start items-start gap-4 w-full">
-        <span className="text-sm md:text-lg font-[400] text-[#9a9888]">Moniswap v1.0.0</span>
+        <span className="text-sm md:text-lg font-[400] text-[#9a9888]">{__STRINGS__.__misc__.v}</span>
         <div className="flex justify-start items-start gap-2 w-full">
-          <span className="text-sm md:text-lg font-[400] text-[#9a9888] capitalize">provide feedback</span>
+          <span className="text-sm md:text-lg font-[400] text-[#9a9888] capitalize">
+            {t(__STRINGS__.__actions__.provide_feedback)}
+          </span>
           <a href="#" className="btn btn-ghost btn-xs text-center flex justify-center items-center">
             <FaRegComment size={20} />
           </a>
