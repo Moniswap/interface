@@ -41,7 +41,7 @@ function NavigationBar() {
       <div className="flex flex-col gap-[1px] w-full">
         <div className="flex justify-start items-center gap-4">
           <Image src="/images/logo.svg" alt="logo" height={55} width={55} />
-          <span className="md:text-4xl text-lg uppercase font-[600]">{__STRINGS__.app_title}</span>
+          <span className="md:text-4xl text-3xl uppercase font-[600]">{__STRINGS__.app_title}</span>
         </div>
         <span className="capitalize hidden md:block text-right text-[#bab300] text-xs md:text-lg font-[400]">
           {chainInfo.isTestnet ? __STRINGS__.__networks__.testnet : __STRINGS__.__networks__.mainnet}

@@ -20,6 +20,29 @@ export const __CHAIN_INFO__ = {
   }
 };
 
+export const __PROVIDERS__ = {
+  metaMask: {
+    image: "/images/metamask.svg",
+    name: "metamask"
+  },
+  injected: {
+    image: "/images/metamask.svg",
+    name: "metamask"
+  },
+  walletConnect: {
+    image: "/images/metamask.svg",
+    name: "walletConnect"
+  },
+  coinbaseWallet: {
+    image: "/images/coinbase.svg",
+    name: "coinbase"
+  },
+  safe: {
+    image: "/images/safe.svg",
+    name: "safe"
+  }
+};
+
 export const __STRINGS__ = {
   app_title: "moniswap",
   __networks__: {
@@ -37,9 +60,13 @@ export const __STRINGS__ = {
     early_access: "early access",
     nfts: "NFTs"
   },
+  __headers__: {
+    call_to_swap: "Swap between your favorite Berachain assets on Moniswap."
+  },
   __actions__: {
     connect_wallet: "connect wallet",
-    provide_feedback: "provide feedback"
+    provide_feedback: "provide feedback",
+    slippage: "slippage"
   },
   __misc__: {
     v: "Moniswap v1.0.0"
@@ -57,7 +84,8 @@ export const __TRANSLATION__ = {
       [__STRINGS__.app_title]: __STRINGS__.app_title,
       ...__STRINGS__.__link_titles__,
       ...__STRINGS__.__actions__,
-      ...__STRINGS__.__misc__
+      ...__STRINGS__.__misc__,
+      ...__STRINGS__.__headers__
     }
   },
   fr: {
@@ -72,7 +100,8 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__link_titles__.vote]: "vote",
       [__STRINGS__.__actions__.connect_wallet]: "connecter le portefeuille",
       [__STRINGS__.__actions__.provide_feedback]: "donner votre avis",
-      [__STRINGS__.__link_titles__.launchpad]: "rampe de lancement"
+      [__STRINGS__.__link_titles__.launchpad]: "rampe de lancement",
+      [__STRINGS__.__headers__.call_to_swap]: "Échangez entre vos actifs Berachain préférés sur Moniswap."
     }
   },
   es: {
@@ -86,7 +115,8 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__link_titles__.vote]: "votar",
       [__STRINGS__.__actions__.connect_wallet]: "conectar billetera",
       [__STRINGS__.__actions__.provide_feedback]: "dar opinion",
-      [__STRINGS__.__link_titles__.launchpad]: "plataforma de lanzamiento"
+      [__STRINGS__.__link_titles__.launchpad]: "plataforma de lanzamiento",
+      [__STRINGS__.__headers__.call_to_swap]: "Intercambie entre sus activos Berachain favoritos en Moniswap."
     }
   }
 };

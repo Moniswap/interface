@@ -29,7 +29,7 @@ export default function RootLayout({
             <div className="w-full md:w-1/5">
               <NavigationBar />
             </div>
-            <div className="self-stretch flex justify-center items-start px-1 md:px-8 overflow-auto">{children}</div>
+            <div className="self-stretch px-1 md:px-5 overflow-auto w-full md:w-[60%]">{children}</div>
             <div className="hidden md:block w-1/5">
               <OptionsBar />
             </div>
