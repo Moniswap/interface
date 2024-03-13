@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import themesReducer from "./slices/themeSlice";
+import rpcNodeReducer from "./slices/rpcNodeSlice";
 import storage from "redux-persist/lib/storage";
 
 const persistConfig = {
@@ -9,11 +10,13 @@ const persistConfig = {
 };
 
 const persistedThemeReducer = persistReducer(persistConfig, themesReducer);
+const persistedRPCNodeReducer = persistReducer(persistConfig, rpcNodeReducer);
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
   reducer: {
-    theme: persistedThemeReducer
+    theme: persistedThemeReducer,
+    rpcNode: persistedRPCNodeReducer
   }
 });
 
