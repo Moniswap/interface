@@ -5,8 +5,9 @@ import { walletConnect, injected, coinbaseWallet, safe } from "wagmi/connectors"
 
 export const config = createConfig({
   chains: [berachainTestnet, sepolia],
+  multiInjectedProviderDiscovery: false,
   connectors: [
-    injected(),
+    injected({ target: "metaMask" }),
     coinbaseWallet({ appName: "Moniswap" }),
     safe(),
     walletConnect({

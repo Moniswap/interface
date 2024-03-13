@@ -20,6 +20,43 @@ export const __CHAIN_INFO__ = {
   }
 };
 
+export const __PROVIDERS__ = {
+  metaMask: {
+    image: "/images/metamask.svg",
+    name: "metamask"
+  },
+  injected: {
+    image: "/images/metamask.svg",
+    name: "metamask"
+  },
+  walletConnect: {
+    image: "/images/walletconnect.svg",
+    name: "walletConnect"
+  },
+  coinbaseWalletSDK: {
+    image: "/images/coinbase.svg",
+    name: "coinbase"
+  },
+  safe: {
+    image: "/images/safe.svg",
+    name: "safe"
+  }
+};
+
+export const __RPCS__ = {
+  [__CHAIN_IDS__.bera_testnet]: [
+    { serviceName: "Ankr", url: "https://rpc.ankr.com/berachain_testnet" },
+    { serviceName: "Berachain", url: "https://artio.rpc.berachain.com" }
+  ],
+  [__CHAIN_IDS__.sepolia]: [
+    { serviceName: "Tenderly", url: "https://sepolia.gateway.tenderly.co" },
+    { serviceName: "Blockpi", url: "https://ethereum-sepolia.blockpi.network/v1/rpc/public" },
+    { serviceName: "1RPC", url: "https://1rpc.io/sepolia" },
+    { serviceName: "Public Node", url: "https://ethereum-sepolia-rpc.publicnode.com" },
+    { serviceName: "Blast API", url: "https://eth-sepolia.public.blastapi.io" }
+  ]
+};
+
 export const __STRINGS__ = {
   app_title: "moniswap",
   __networks__: {
@@ -37,12 +74,20 @@ export const __STRINGS__ = {
     early_access: "early access",
     nfts: "NFTs"
   },
+  __headers__: {
+    call_to_swap: "Swap between your favorite Berachain assets on Moniswap."
+  },
   __actions__: {
     connect_wallet: "connect wallet",
-    provide_feedback: "provide feedback"
+    provide_feedback: "provide feedback",
+    slippage: "slippage",
+    connect_wallet_ex: "Connect wallet in one click to start using Moniswap."
   },
   __misc__: {
-    v: "Moniswap v1.0.0"
+    v: "Moniswap v1.0.0",
+    vo: "View-only permissions: We can't do anything without your approval.",
+    new: "New to Web3?",
+    learn: "Learn about wallets."
   },
   __lng__: {
     francais: "fr",
@@ -57,7 +102,8 @@ export const __TRANSLATION__ = {
       [__STRINGS__.app_title]: __STRINGS__.app_title,
       ...__STRINGS__.__link_titles__,
       ...__STRINGS__.__actions__,
-      ...__STRINGS__.__misc__
+      ...__STRINGS__.__misc__,
+      ...__STRINGS__.__headers__
     }
   },
   fr: {
@@ -72,7 +118,14 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__link_titles__.vote]: "vote",
       [__STRINGS__.__actions__.connect_wallet]: "connecter le portefeuille",
       [__STRINGS__.__actions__.provide_feedback]: "donner votre avis",
-      [__STRINGS__.__link_titles__.launchpad]: "rampe de lancement"
+      [__STRINGS__.__link_titles__.launchpad]: "rampe de lancement",
+      [__STRINGS__.__headers__.call_to_swap]: "Échangez entre vos actifs Berachain préférés sur Moniswap.",
+      [__STRINGS__.__actions__.connect_wallet_ex]:
+        "Connectez le portefeuille en un clic pour commencer à utiliser Moniswap.",
+      [__STRINGS__.__misc__.vo]:
+        "Autorisations d'affichage uniquement : nous ne pouvons rien faire sans votre approbation.",
+      [__STRINGS__.__misc__.new]: "Nouveau sur Web3 ?",
+      [__STRINGS__.__misc__.learn]: "Apprenez-en davantage sur les portefeuilles."
     }
   },
   es: {
@@ -86,7 +139,12 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__link_titles__.vote]: "votar",
       [__STRINGS__.__actions__.connect_wallet]: "conectar billetera",
       [__STRINGS__.__actions__.provide_feedback]: "dar opinion",
-      [__STRINGS__.__link_titles__.launchpad]: "plataforma de lanzamiento"
+      [__STRINGS__.__link_titles__.launchpad]: "plataforma de lanzamiento",
+      [__STRINGS__.__headers__.call_to_swap]: "Intercambie entre sus activos Berachain favoritos en Moniswap.",
+      [__STRINGS__.__actions__.connect_wallet_ex]: "Conecte la billetera con un clic para comenzar a usar Moniswap.",
+      [__STRINGS__.__misc__.vo]: "Permisos de solo visualización: no podemos hacer nada sin su aprobación.",
+      [__STRINGS__.__misc__.new]: "¿Nuevo en Web3?",
+      [__STRINGS__.__misc__.learn]: "Aprenda sobre billeteras."
     }
   }
 };
