@@ -75,19 +75,24 @@ export const __STRINGS__ = {
     nfts: "NFTs"
   },
   __headers__: {
-    call_to_swap: "Swap between your favorite Berachain assets on Moniswap."
+    call_to_swap: "Swap between your favorite Berachain assets on Moniswap.",
+    call_to_liquidity:
+      "Liquidity providers (LPs) make low-slippage swaps possible. Deposit and stake liquidity to earn MONI points."
   },
   __actions__: {
     connect_wallet: "connect wallet",
     provide_feedback: "provide feedback",
     slippage: "slippage",
-    connect_wallet_ex: "Connect wallet in one click to start using Moniswap."
+    connect_wallet_ex: "Connect wallet in one click to start using Moniswap.",
+    create_liquidity: "create liquidity"
   },
   __misc__: {
     v: "Moniswap v1.0.0",
     vo: "View-only permissions: We can't do anything without your approval.",
     new: "New to Web3?",
-    learn: "Learn about wallets."
+    learn: "Learn about wallets.",
+    liquidity: "liquidity pools",
+    token_list: "token list"
   },
   __lng__: {
     francais: "fr",
@@ -125,7 +130,12 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__misc__.vo]:
         "Autorisations d'affichage uniquement : nous ne pouvons rien faire sans votre approbation.",
       [__STRINGS__.__misc__.new]: "Nouveau sur Web3 ?",
-      [__STRINGS__.__misc__.learn]: "Apprenez-en davantage sur les portefeuilles."
+      [__STRINGS__.__misc__.learn]: "Apprenez-en davantage sur les portefeuilles.",
+      [__STRINGS__.__misc__.liquidity]: "pools de liquidités",
+      [__STRINGS__.__headers__.call_to_liquidity]:
+        "Les fournisseurs de liquidité (LP) permettent des swaps à faible glissement. Déposez et misez des liquidités pour gagner des points MONI.",
+      [__STRINGS__.__misc__.token_list]: "liste de jetons",
+      [__STRINGS__.__actions__.create_liquidity]: "créer de la liquidité"
     }
   },
   es: {
@@ -144,7 +154,12 @@ export const __TRANSLATION__ = {
       [__STRINGS__.__actions__.connect_wallet_ex]: "Conecte la billetera con un clic para comenzar a usar Moniswap.",
       [__STRINGS__.__misc__.vo]: "Permisos de solo visualización: no podemos hacer nada sin su aprobación.",
       [__STRINGS__.__misc__.new]: "¿Nuevo en Web3?",
-      [__STRINGS__.__misc__.learn]: "Aprenda sobre billeteras."
+      [__STRINGS__.__misc__.learn]: "Aprenda sobre billeteras.",
+      [__STRINGS__.__misc__.liquidity]: "fondos de liquidez",
+      [__STRINGS__.__headers__.call_to_liquidity]:
+        "Los proveedores de liquidez (LP) hacen posibles swaps de bajo deslizamiento. Deposite y apueste liquidez para ganar puntos MONI.",
+      [__STRINGS__.__misc__.token_list]: "lista de tokens",
+      [__STRINGS__.__actions__.create_liquidity]: "crear liquidez"
     }
   }
 };
