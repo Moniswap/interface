@@ -5,6 +5,8 @@ import "@/i18n";
 import NavigationBar from "@/ui/NavigationBar";
 import OptionsBar from "@/ui/OptionsBar";
 import AllContexts from "@/contexts/all";
+import Header from "@/ui/Header";
+import Footer from "@/ui/Footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,14 +27,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AllContexts>
-          <div className="min-h-screen w-screen overflow-auto flex flex-col md:flex-row justify-start md:justify-between items-start bg-[#fefce9]">
-            <div className="w-full md:w-1/5">
-              <NavigationBar />
-            </div>
-            <div className="self-stretch px-1 md:px-5 overflow-hidden w-full md:w-[60%]">{children}</div>
-            <div className="hidden md:block w-1/5">
-              <OptionsBar />
-            </div>
+          <div className="min-h-screen w-screen overflow-x-hidden flex flex-col justify-start items-center gap-5 bg-[#000004]">
+            <Header />
+            <div className="self-stretch overflow-auto">{children}</div>
+            <Footer />
           </div>
         </AllContexts>
       </body>
