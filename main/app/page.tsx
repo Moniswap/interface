@@ -3,7 +3,7 @@ import { FiChevronDown } from "react-icons/fi";
 
 export default function Home() {
   return (
-    <main className="text-[--inverted-text] relative w-screen">
+    <main className="text-[--inverted-text] relative w-full">
       <section className="w-full">
         <div className="flex w-full mx-auto items-center justify-center h-fit md:h-screen flex-col py-20 md:py-0">
           <div className="flex flex-col justify-center text-center">

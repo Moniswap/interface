@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AllContexts>
-          <div className="min-h-screen w-screen overflow-auto flex flex-col md:flex-row justify-start md:justify-between items-start bg-[#fefce9]">
+          <div className="min-h-screen w-full overflow-auto flex flex-col md:flex-row justify-start md:justify-between items-start bg-[#fefce9]">
             <div className="w-full md:w-1/5">
               <NavigationBar />
             </div>

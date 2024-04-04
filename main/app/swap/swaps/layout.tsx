@@ -1,10 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import "@/i18n";
-import NavigationBar from "@/ui/NavigationBar";
-import OptionsBar from "@/ui/OptionsBar";
-import AllContexts from "@/contexts/all";
+import "../../globals.css";
 import Header from "@/ui/Header";
 import Footer from "@/ui/Footer";
 
@@ -25,14 +21,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <AllContexts>
-          <div className="min-h-screen w-full overflow-x-hidden flex flex-col justify-start items-center gap-5 bg-[#000004]">
-            <Header />
-            <div className="self-stretch overflow-auto">{children}</div>
-            <Footer />
-          </div>
-        </AllContexts>
+      <body className={`${inter.className} bg-[#000]`}>
+        <Header />
+        <div className="self-stretch overflow-auto">{children}</div>
+        <Footer />
       </body>
     </html>
   );

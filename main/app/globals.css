@@ -10,12 +10,13 @@
   --border-left-bg: rgba(125, 125, 125, 1);
   --border-left-bg-hover: rgba(125, 125, 125, 0.3);
   --border-left-active-bg: rgba(252, 132, 21, 1);
+  --border-bg: rgba(43, 43, 43, 1);
 }
 body {
   margin: 0;
   padding: 0;
   height: 100vh;
-  width: 100vw;
+  /* width: 100vw; */
 }
 
 input::-webkit-outer-spin-button,
