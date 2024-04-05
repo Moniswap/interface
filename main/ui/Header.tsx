@@ -1,14 +1,16 @@
 "use client";
 
-import { __CHAIN_INFO__, __CHAIN_IDS__ } from "@/constants";
+import { __CHAIN_INFO__, __CHAIN_IDS__, __PROVIDERS__ } from "@/constants";
 import Image from "next/image";
 import Link, { type LinkProps } from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BiChevronUp } from "react-icons/bi";
-import { FiChevronDown, FiChevronUp, FiX } from "react-icons/fi";
+import { FiChevronDown, FiChevronUp, FiSettings, FiX } from "react-icons/fi";
 import { RiMenu3Fill } from "react-icons/ri";
-import { useChains, useChainId, useSwitchChain } from "wagmi";
+import { useChains, useChainId, useSwitchChain, useAccount, useDisconnect } from "wagmi";
+import WalletConnectModal from "@/ui/modals/WalletConnectModal";
+import { customEllipsize } from "@/helpers/utils";
 
 const ActiveLink: React.FC<LinkProps & { children: any }> = ({ href, children, ...props }) => {
   const pathname = usePathname();
@@ -45,13 +47,15 @@ const ActiveFloatingLink: React.FC<LinkProps & { children: any }> = ({ href, chi
 function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+  const { isConnected, address, connector } = useAccount();
+  const { disconnect } = useDisconnect();
   const [showMore, setShowMore] = useState(false);
-
   const chains = useChains();
   const chainId = useChainId();
   const chainInfo = useMemo(() => __CHAIN_INFO__[chainId ?? __CHAIN_IDS__.bera_testnet], [chainId]);
   const [chainSwitchOpen, setChainSwitchOpen] = useState(false);
   const { switchChain } = useSwitchChain();
+  const walletConnectModalRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -73,9 +77,11 @@ function Header() {
       <div className="w-screen relative">
         <div className={`flex h-[70px] md:h-[70px] ${isFixed ? " bg-[#000] fixed top-0 z-50 w-full" : ""} `}>
           <div className="w-full mx-[20px] flex items-center justify-between border-[rgba(43,43,43,1)]  border-b-2">
-            <div className="flex">
-              <Image src="/images/logo.png" width={150} height={60} alt="logo" className="hidden md:flex" />
-              <Image src="/images/md_logo.png" width={40} height={40} alt="logo" className="flex md:hidden" />
+            <div className="flex items-center justify-start w-1/3">
+              <Link href={"/"}>
+                <Image src="/images/logo.png" width={150} height={60} alt="logo" className="hidden md:flex" />
+                <Image src="/images/md_logo.png" width={40} height={40} alt="logo" className="flex md:hidden" />
+              </Link>
             </div>
             <div className="flex items-center justify-center w-1/2">
               <ul className="md:flex gap-8 text-sm font-[400] justify-around w-full hidden items-center">
@@ -132,9 +138,9 @@ function Header() {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center justify-center gap-3">
+            <div className="flex items-center justify-end gap-3 w-1/3">
               <details
-                className="dropdown hidden md:block dropdown-end w-full"
+                className="dropdown hidden md:block dropdown-end"
                 open={chainSwitchOpen}
                 onToggle={event => setChainSwitchOpen(event.currentTarget.open)}
               >
@@ -179,9 +185,35 @@ function Header() {
               <button className="bg-white rounded-full p-2 btn btn-ghost btn-sm flex justify-center items-center md:hidden">
                 <Image src={chainInfo.image} width={16} height={16} alt={chainInfo.name} />
               </button>
-              <button className="btn md:btn-md outline-none border-0 text-white text-sm font-[400] bg-gradient-to-br from-yellow-400 to-orange-500 h-10 min-h-10 rounded-md capitalize">
-                connect
-              </button>
+              {!isConnected ? (
+                <button
+                  className="btn md:btn-md outline-none border-0 text-white text-sm font-[400] bg-gradient-to-br from-yellow-400 to-orange-500 h-10 min-h-10 rounded-md capitalize"
+                  onClick={() => {
+                    if (walletConnectModalRef.current) walletConnectModalRef.current.checked = true;
+                  }}
+                >
+                  connect
+                </button>
+              ) : (
+                <button
+                  className="w-50 m-1 btn btn-ghost flex justify-start items-center gap-3 bg-[#111111] capitalize px-2 py-2 rounded-[5px]"
+                  onClick={() => {
+                    disconnect({ connector });
+                  }}
+                >
+                  <Image
+                    src={__PROVIDERS__[connector?.id as keyof typeof __PROVIDERS__]?.image}
+                    width={25}
+                    height={25}
+                    alt={__PROVIDERS__[connector?.id as keyof typeof __PROVIDERS__]?.name}
+                    className="rounded-full"
+                  />
+                  <span className="text-sm md:text-lg font-[500] text-zinc-500">
+                    {customEllipsize(address as string, 6, 4)}
+                  </span>
+                  <FiSettings color="#8c8c8c" />
+                </button>
+              )}
               {showDrawer ? (
                 <button
                   className="btn btn-sm btn-ghost btn-square bg-[#1e1e1e] text-lg font-[400] rounded-[5px] p-[2px] cursor-pointer md:hidden flex transition-all delay-75"
@@ -221,6 +253,12 @@ function Header() {
           </div>
         )}
       </div>
+      <WalletConnectModal
+        ref={walletConnectModalRef}
+        close={() => {
+          if (walletConnectModalRef.current) walletConnectModalRef.current.checked = false;
+        }}
+      ></WalletConnectModal>
     </>
   );
 }

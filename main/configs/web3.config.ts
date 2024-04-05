@@ -13,6 +13,15 @@ export const config = createConfig({
     walletConnect({
       projectId: process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID as string,
       relayUrl: "wss://relay.walletconnect.com"
+    }),
+    injected({
+      target() {
+        return {
+          id: "trust",
+          name: "Trust Wallet",
+          provider: typeof window !== "undefined" ? (window as any).trustwallet : undefined
+        };
+      }
     })
   ],
   client({ chain }) {

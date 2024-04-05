@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import themesReducer from "./slices/themeSlice";
 import rpcNodeReducer from "./slices/rpcNodeSlice";
-import storage from "redux-persist/lib/storage";
+import storage from "./storage";
 
 const persistConfig = {
   key: "root",
@@ -17,7 +17,11 @@ export const store = configureStore({
   reducer: {
     theme: persistedThemeReducer,
     rpcNode: persistedRPCNodeReducer
-  }
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: false
+    })
 });
 
 export const persistor = persistStore(store);
