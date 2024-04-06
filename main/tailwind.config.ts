@@ -17,7 +17,13 @@ const config: Config = {
   },
   plugins: [require("daisyui")],
   daisyui: {
-    themes: []
+    themes: [
+      {
+        moniswap: {
+          "base-100": "#FC8415"
+        }
+      }
+    ]
   }
 };
 export default config;

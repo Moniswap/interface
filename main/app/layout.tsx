@@ -24,7 +24,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="bg-black">
       <body className={inter.className}>
         <AllContexts>
           <div className="min-h-screen w-screen overflow-x-hidden flex flex-col justify-start items-center gap-5 bg-[#000004]">

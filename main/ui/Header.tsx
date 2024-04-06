@@ -9,6 +9,7 @@ import { BiChevronUp } from "react-icons/bi";
 import { FiChevronDown, FiChevronUp, FiSettings, FiX } from "react-icons/fi";
 import { RiMenu3Fill } from "react-icons/ri";
 import { useChains, useChainId, useSwitchChain, useAccount, useDisconnect } from "wagmi";
+import WalletSettingsModal from "@/ui/modals/WalletSettingsModal";
 import WalletConnectModal from "@/ui/modals/WalletConnectModal";
 import { customEllipsize } from "@/helpers/utils";
 
@@ -48,7 +49,6 @@ function Header() {
   const [isFixed, setIsFixed] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const { isConnected, address, connector } = useAccount();
-  const { disconnect } = useDisconnect();
   const [showMore, setShowMore] = useState(false);
   const chains = useChains();
   const chainId = useChainId();
@@ -56,6 +56,7 @@ function Header() {
   const [chainSwitchOpen, setChainSwitchOpen] = useState(false);
   const { switchChain } = useSwitchChain();
   const walletConnectModalRef = useRef<HTMLInputElement>(null);
+  const walletSettingsModalRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,7 +118,7 @@ function Header() {
                     >
                       more {!showMore ? <FiChevronDown color="#cfcfcf" /> : <FiChevronUp color="#cfcfcf" />}
                     </summary>
-                    <ul tabIndex={0} className="dropdown-content z-[1] menu shadow bg-base-100 rounded-box w-52">
+                    <ul tabIndex={0} className="dropdown-content z-[1] menu shadow rounded-box w-52">
                       <li className="p-[4px]">
                         <ActiveFloatingLink href="/">
                           <span className="capitalize">incentives</span>
@@ -198,7 +199,7 @@ function Header() {
                 <button
                   className="w-50 m-1 btn btn-ghost flex justify-start items-center gap-3 bg-[#111111] capitalize px-2 py-2 rounded-[5px]"
                   onClick={() => {
-                    disconnect({ connector });
+                    if (walletSettingsModalRef.current) walletSettingsModalRef.current.checked = true;
                   }}
                 >
                   <Image
@@ -259,6 +260,14 @@ function Header() {
           if (walletConnectModalRef.current) walletConnectModalRef.current.checked = false;
         }}
       ></WalletConnectModal>
+      {isConnected && (
+        <WalletSettingsModal
+          ref={walletSettingsModalRef}
+          close={() => {
+            if (walletSettingsModalRef.current) walletSettingsModalRef.current.checked = false;
+          }}
+        ></WalletSettingsModal>
+      )}
     </>
   );
 }
