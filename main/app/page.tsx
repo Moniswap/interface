@@ -1,5 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
 import { FiChevronDown } from "react-icons/fi";
+import { PiRocket } from "react-icons/pi";
 
 export default function Home() {
   return (
@@ -16,10 +18,13 @@ export default function Home() {
               </span>
             </h1>
             <div className="text-center flex items-center justify-center my-10 flex-col">
-              <div className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-20 h-20 flex items-center justify-center text-center flex-col text-[12px] text-white">
-                <Image src="/images/plane.png" width={20} height={20} alt="swap" />
-                swap
-              </div>
+              <Link
+                href="/swap"
+                className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-[100px] h-[100px] flex items-center justify-center text-center flex-col gap-3 text-[12px] text-white my-5 leading-tight"
+              >
+                <PiRocket color="#fff" size={30} />
+                <p className="text-sm capitalize">swap</p>
+              </Link>
               <div className="py-3">
                 <FiChevronDown className="text-[20px] -mb-2 text-[--inverted-text]" />
                 <FiChevronDown className="text-[20px] -mb-2 text-[--inverted-text]" />
@@ -212,12 +217,15 @@ export default function Home() {
           </div>
           <div className="flex items-center h-[calc(100vh-100px)] flex-col  justify-center w-full">
             <Image src="/images/chain.png" width={90} height={30} alt="chain" className="my-5" />
-            <h1 className="text-white text-[25px] italic">Looking to get </h1>
-            <h1 className="text-white text-[40px] italic">Started on Moniswap?</h1>
-            <div className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-[100px] h-[100px] flex items-center justify-center text-center flex-col text-[12px] text-white my-5 leading-tight">
-              <Image src="/images/plane.png" width={20} height={20} alt="swap" />
-              <p className="text-[12px]">Onboarding Guide</p>
-            </div>
+            <h1 className="text-white text-[25px] italic text-center">Looking to get </h1>
+            <h1 className="text-white text-[40px] italic text-center">Started on Moniswap?</h1>
+            <Link
+              href="/swap"
+              className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-[100px] h-[100px] flex items-center justify-center text-center flex-col gap-3 text-[12px] text-white my-5 leading-tight"
+            >
+              <PiRocket color="#fff" size={25} />
+              <p className="text-xs capitalize">onboarding guide</p>
+            </Link>
           </div>
         </div>
       </section>

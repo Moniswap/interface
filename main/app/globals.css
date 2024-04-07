@@ -24,6 +24,30 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+  border-radius: 20px;
+  background: #0029ff;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #fff;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #000;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #dcdcdc;
+}
+
 input[type="number"] {
   -moz-appearance: textfield;
 }

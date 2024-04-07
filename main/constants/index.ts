@@ -23,23 +23,23 @@ export const __CHAIN_INFO__ = {
 export const __PROVIDERS__ = {
   metaMask: {
     image: "/images/metamask.svg",
-    name: "Connect with Metamask"
+    name: "Metamask"
   },
   walletConnect: {
     image: "/images/walletconnect.svg",
-    name: "Connect with Wallet Connect"
+    name: "WalletConnect"
   },
   coinbaseWalletSDK: {
     image: "/images/coinbase.svg",
-    name: "Connect with Coinbase Wallet"
+    name: "Coinbase Wallet"
   },
   safe: {
     image: "/images/safe.svg",
-    name: "Connect with Safe Wallet"
+    name: "Safe Wallet"
   },
   trust: {
     image: "/images/trust.svg",
-    name: "Connect with Trust Wallet"
+    name: "Trust Wallet"
   }
 };
 

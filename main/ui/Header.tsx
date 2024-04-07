@@ -85,58 +85,68 @@ function Header() {
               </Link>
             </div>
             <div className="flex items-center justify-center w-1/2">
-              <ul className="md:flex gap-8 text-sm font-[400] justify-around w-full hidden items-center">
+              <ul
+                className={`md:flex gap-8 text-sm font-[400] ${
+                  isConnected ? "justify-around" : "justify-center"
+                } w-full hidden items-center`}
+              >
                 <li>
                   <ActiveLink href="/swap">
                     <span className="capitalize text-lg">swap</span>
                   </ActiveLink>
                 </li>
+                {isConnected && (
+                  <li>
+                    <ActiveLink href="#">
+                      <span className="capitalize text-lg">dashboard</span>
+                    </ActiveLink>
+                  </li>
+                )}
                 <li>
-                  <ActiveLink href="/">
-                    <span className="capitalize text-lg">dashboard</span>
-                  </ActiveLink>
-                </li>
-                <li>
-                  <ActiveLink href="/">
+                  <ActiveLink href="#">
                     <span className="capitalize text-lg">liquidity</span>
                   </ActiveLink>
                 </li>
-                <li>
-                  <ActiveLink href="/">
-                    <span className="capitalize text-lg">vote</span>
-                  </ActiveLink>
-                </li>
-                <li>
-                  <details
-                    className="dropdown"
-                    open={showMore}
-                    onToggle={event => setShowMore(event.currentTarget.open)}
-                  >
-                    <summary
-                      role="button"
-                      className="btn m-1 outline-none h-fit border-0 capitalize btn-ghost text-[#cfcfcf] text-lg"
-                    >
-                      more {!showMore ? <FiChevronDown color="#cfcfcf" /> : <FiChevronUp color="#cfcfcf" />}
-                    </summary>
-                    <ul tabIndex={0} className="dropdown-content z-[1] menu shadow rounded-box w-52">
-                      <li className="p-[4px]">
-                        <ActiveFloatingLink href="/">
-                          <span className="capitalize">incentives</span>
-                        </ActiveFloatingLink>
-                      </li>
-                      <li className="p-[4px]">
-                        <ActiveFloatingLink href="/">
-                          <span className="capitalize">launchpad</span>
-                        </ActiveFloatingLink>
-                      </li>
-                      <li className="p-[4px]">
-                        <ActiveFloatingLink href="/">
-                          <span className="capitalize">seekers</span>
-                        </ActiveFloatingLink>
-                      </li>
-                    </ul>
-                  </details>
-                </li>
+                {isConnected && (
+                  <>
+                    <li>
+                      <ActiveLink href="#">
+                        <span className="capitalize text-lg">vote</span>
+                      </ActiveLink>
+                    </li>
+                    <li>
+                      <details
+                        className="dropdown"
+                        open={showMore}
+                        onToggle={event => setShowMore(event.currentTarget.open)}
+                      >
+                        <summary
+                          role="button"
+                          className="btn m-1 outline-none h-fit border-0 capitalize btn-ghost text-[#cfcfcf] text-lg"
+                        >
+                          more {!showMore ? <FiChevronDown color="#cfcfcf" /> : <FiChevronUp color="#cfcfcf" />}
+                        </summary>
+                        <ul tabIndex={0} className="dropdown-content z-[1] menu shadow rounded-box w-52">
+                          <li className="p-[4px]">
+                            <ActiveFloatingLink href="#">
+                              <span className="capitalize">incentives</span>
+                            </ActiveFloatingLink>
+                          </li>
+                          <li className="p-[4px]">
+                            <ActiveFloatingLink href="#">
+                              <span className="capitalize">launchpad</span>
+                            </ActiveFloatingLink>
+                          </li>
+                          <li className="p-[4px]">
+                            <ActiveFloatingLink href="#">
+                              <span className="capitalize">seekers</span>
+                            </ActiveFloatingLink>
+                          </li>
+                        </ul>
+                      </details>
+                    </li>
+                  </>
+                )}
               </ul>
             </div>
             <div className="flex items-center justify-end gap-3 w-1/3">
@@ -145,7 +155,7 @@ function Header() {
                 open={chainSwitchOpen}
                 onToggle={event => setChainSwitchOpen(event.currentTarget.open)}
               >
-                <summary className="bg-white rounded-full p-2 btn btn-ghost btn-sm md:btn-md flex justify-center items-center">
+                <summary className="bg-white btn-circle p-2 btn btn-ghost btn-sm md:btn-md flex justify-center items-center">
                   <Image src={chainInfo.image} width={20} height={20} alt={chainInfo.name} />
                 </summary>
                 <ul className="p-2 w-60 dropdown-content menu rounded-[5px] z-[1] bg-[#111111] menu-lg shadow-lg">
@@ -238,16 +248,16 @@ function Header() {
             className={`flex md:hidden fixed top-[70px] bottom-0 h-screen bg-[#000] w-full z-20 transiton-all delay-75`}
           >
             <div className="w-full my-10 flex flex-col gap-3 justify-start items-center px-3">
-              <ActiveFloatingLink href="/">
+              <ActiveFloatingLink href="/swap">
                 <span className="capitalize">swap</span>
               </ActiveFloatingLink>
-              <ActiveFloatingLink href="/">
+              <ActiveFloatingLink href="#">
                 <span className="capitalize">dashboard</span>
               </ActiveFloatingLink>
-              <ActiveFloatingLink href="/">
+              <ActiveFloatingLink href="#">
                 <span className="capitalize">liquidity</span>
               </ActiveFloatingLink>
-              <ActiveFloatingLink href="/">
+              <ActiveFloatingLink href="#">
                 <span className="capitalize">vote</span>
               </ActiveFloatingLink>
             </div>
@@ -259,14 +269,14 @@ function Header() {
         close={() => {
           if (walletConnectModalRef.current) walletConnectModalRef.current.checked = false;
         }}
-      ></WalletConnectModal>
+      />
       {isConnected && (
         <WalletSettingsModal
           ref={walletSettingsModalRef}
           close={() => {
             if (walletSettingsModalRef.current) walletSettingsModalRef.current.checked = false;
           }}
-        ></WalletSettingsModal>
+        />
       )}
     </>
   );

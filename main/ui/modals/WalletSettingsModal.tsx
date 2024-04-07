@@ -1,67 +1,43 @@
+/* eslint-disable react/display-name */
 import * as React from "react";
 import Image from "next/image";
 import { forwardRef, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useAccount, useConfig, useConnect, useBalance, useDisconnect } from "wagmi";
+import { useAccount, useConfig, useConnect, useBalance, useDisconnect, useChainId } from "wagmi";
 import { FiX } from "react-icons/fi";
 import { customEllipsize } from "@/helpers/utils";
 import { BiCopy, BiWallet } from "react-icons/bi";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/configs/store";
-import { changeCustomRPCUrl } from "@/configs/store/slices/customRPCUrlSlice";
-import { changeExecutionDeadline } from "@/configs/store/slices/executionDeadlineSlice";
-import { changeAllowUnsafeTrades } from "@/configs/store/slices/allowUnsafeTradesSlice";
-import { changeSlippageTolerance } from "@/configs/store/slices/slippageToleranceSlice";
+import {
+  changeAllowUnsafeTrades,
+  changeExecutionDeadlineInMinutes,
+  changeRPCNodeUrl,
+  changeSlippageTolerance
+} from "@/configs/store/slices/walletSettingsSlice";
 
 interface ModalProps {
   close?: () => any;
 }
 
-function SlippageToleranceItem({
-  value,
-  selectedValue,
-  onClick
-}: {
-  value: string;
-  selectedValue: string;
-  onClick: (value: string) => void;
-}) {
-  let classes = "cursor-pointer justify-center px-4 py-3.5 italic border-r border-solid border-stone-700 ";
-  if (value === "0.01%") {
-    classes = "cursor-pointer justify-center px-3 py-3.5 italic rounded-l-xl border-r border-solid border-stone-700";
-  } else if (value === "or") {
-    classes = "cursor-default justify-center px-5 py-3.5 font-light border-r border-solid border-stone-700";
-  } else if (value === "1.0") {
-    classes = "cursor-pointer justify-center px-3.5 py-3.5 italic rounded-r-xl border-solid border-stone-700";
-  }
-  return (
-    <div
-      className={`${classes} ${selectedValue === value ? "bg-[#FC8415]" : ""}`}
-      onClick={() => value !== "or" && onClick(value)}
-    >
-      {value}
-    </div>
-  );
-}
-
 const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close }, ref) => {
   const { address, connector } = useAccount();
   const { disconnect } = useDisconnect();
+  const chainId = useChainId();
   const dispatch = useDispatch();
-  const balance = useBalance({
+  const { data: balanceData } = useBalance({
     address
-  })?.data;
-  const { executionDeadline } = useSelector((state: RootState) => state.executionDeadline);
-  const { allowUnsafeTrades } = useSelector((state: RootState) => state.allowUnsafeTrades);
-  const { customRPCUrl } = useSelector((state: RootState) => state.customRPCUrl);
-  const { slippageTolerance } = useSelector((state: RootState) => state.slippageTolerance);
-  const slippageToleranceOptions = ["0.01%", "0.1%", "0.5%", "1%", "5%", "or", "1.0"];
+  });
+  const { slippageTolerance, rpcNode, allowUnsafeTrades, executionDeadlineInMinutes } = useSelector(
+    (state: RootState) => state.wallet
+  );
+  const slippageToleranceOptions = [0.01, 0.1, 0.5, 1, 5];
 
   return (
     <>
       <input type="checkbox" className="modal-toggle" id="wallet-settings-modal" ref={ref} />
       <div className="modal w-auto z-60" role="dialog">
-        <div className="bg-[#111] rounded-[5px] modal-box p-3 flex flex-col justify-start items-center gap-7 z-20">
+        <div className="bg-[#111] rounded-[5px] modal-box p-3 flex flex-col justify-start items-center gap-7 z-20 overflow-hidden">
           <section className="flex flex-col pb-14 w-full rounded-xl bg-[#111] max-md:max-w-full z-20">
             <label
               htmlFor="wallet-settings-modal"
@@ -88,12 +64,12 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     </div>
                   </div>
                   <div className="italic text-zinc-500 max-md:max-w-full">
-                    Balance: {`${balance?.formatted} ${balance?.symbol}`}
+                    Balance: {`${balanceData?.formatted} ${balanceData?.symbol}`}
                   </div>
                 </div>
               </div>
             </div>
-            <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full">
+            <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full overflow-auto h-96 md:h-[700px]">
               <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
                 <div className="flex flex-col px-4 py-5 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full">
                   <div className="italic max-md:max-w-full">
@@ -105,8 +81,8 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     type="text"
                     className="justify-center items-start px-2.5 py-4 mt-5 italic rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
                     placeholder="RPC URL......."
-                    value={customRPCUrl}
-                    onChange={ev => dispatch(changeCustomRPCUrl(ev.target.value))}
+                    value={rpcNode[chainId].url}
+                    onChange={ev => dispatch(changeRPCNodeUrl({ chainId, value: ev.target.value }))}
                   />
                   <div className="mt-6 italic max-md:max-w-full">
                     Leave blank if you want to use the RPC provided by us.
@@ -116,20 +92,35 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
               </div>
 
               <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
-                <div className="flex flex-col px-4 py-6 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full">
-                  <div className="italic max-md:max-w-full">Slippage tolerance {slippageTolerance}</div>
-                  <div className="flex gap-5 mt-3 w-full whitespace-nowrap rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 max-md:flex-wrap max-md:max-w-full">
-                    <div className="flex flex-auto gap-0 font-bold text-center">
-                      {slippageToleranceOptions.map((option, index) => (
-                        <SlippageToleranceItem
-                          key={index}
-                          value={option}
-                          selectedValue={slippageTolerance}
-                          onClick={value => dispatch(changeSlippageTolerance(value))}
-                        />
-                      ))}
-                    </div>
+                <div className="flex flex-col px-4 py-6 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full gap-3">
+                  <div className="italic max-md:max-w-full">Slippage tolerance: {slippageTolerance}%</div>
+
+                  <div className="flex justify-center items-center gap-5 border border-stone-700 rounded-xl bg-[#1e1e1e] w-full">
+                    {slippageToleranceOptions.map((option, index) => (
+                      <button
+                        style={{ width: `${(1 / slippageToleranceOptions.length) * 100}%` }}
+                        key={index}
+                        className={`flex justify-center items-center text-center py-3 border-none font-[700] italic text-[#cfcfcf] text-sm ${
+                          index === 0 && "rounded-l-xl"
+                        } ${index === slippageToleranceOptions.length - 1 && "rounded-r-xl"} ${
+                          option === slippageTolerance ? "bg-[#FC8415]" : "bg-transparent"
+                        } hover:bg-[#FC8415]`}
+                        onClick={() => dispatch(changeSlippageTolerance(option))}
+                      >
+                        {option}%
+                      </button>
+                    ))}
                   </div>
+                  <div className="w-full flex justify-center items-center">
+                    <span className="text-[#cfcfcf] text-sm">or</span>
+                  </div>
+                  <input
+                    type="number"
+                    className="justify-center items-start px-2.5 py-4 mt-5 italic rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
+                    placeholder="Custom slippage......."
+                    value={slippageTolerance}
+                    onChange={ev => dispatch(changeSlippageTolerance(ev.target.valueAsNumber))}
+                  />
                 </div>
               </div>
               <div className="flex z-10 flex-col pt-3 mt-2 mb-0 rounded-none border-t border-solid border-zinc-800 max-md:mb-2.5 max-md:max-w-full">
@@ -139,14 +130,16 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     <input
                       type="range"
                       min="1"
-                      max="10"
-                      value={executionDeadline}
+                      max="20"
+                      value={executionDeadlineInMinutes}
                       className="range bg-[#444242] mt-4"
                       style={{ height: "0.5rem", overflow: "inherit", "--range-shdw": "none" } as React.CSSProperties}
-                      onChange={ev => dispatch(changeExecutionDeadline(Number(ev.target.value)))}
+                      onChange={ev => dispatch(changeExecutionDeadlineInMinutes(Number(ev.target.value)))}
                     />
                   </div>
-                  <div className="flex-auto self-end mt-7 italic font-bold text-right">{executionDeadline} minutes</div>
+                  <div className="flex-auto self-end mt-7 italic font-bold text-right">
+                    {executionDeadlineInMinutes} minutes
+                  </div>
                 </div>
                 <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
                   <div className="py-3.5 px-4 rounded-xl bg-[#1E1E1E] max-md:pr-5 max-md:max-w-full">
@@ -166,7 +159,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                           className="toggle self-end bg-[#FC8415] border-none hover:bg-[#FC8415] "
                           style={{ "--tglbg": "#444242" } as React.CSSProperties}
                           checked={allowUnsafeTrades}
-                          onChange={ev => dispatch(changeAllowUnsafeTrades(!allowUnsafeTrades))}
+                          onChange={() => dispatch(changeAllowUnsafeTrades(!allowUnsafeTrades))}
                         />
                       </div>
                     </div>

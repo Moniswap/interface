@@ -70,7 +70,7 @@ function Footer() {
           </div>
           <div className="order-2 md:order-none">
             <Link
-              href="/"
+              href="/swap"
               className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-[100px] h-[100px] flex items-center justify-center text-center flex-col gap-3 text-[12px] text-white my-5 leading-tight"
             >
               <PiRocket color="#fff" size={30} />
