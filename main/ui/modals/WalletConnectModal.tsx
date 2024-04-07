@@ -18,10 +18,10 @@ const WalletConnectModal = forwardRef<HTMLInputElement, ModalProps>(({ close }, 
     <>
       <input type="checkbox" className="modal-toggle" id="connect-wallet-modal" ref={ref} />
       <div className="modal" role="dialog">
-        <div className="bg-[#111] rounded-[8.61px] modal-box p-3 flex flex-col justify-start items-center gap-7 z-20 overflow-hidden">
+        <div className="bg-[#111] rounded-[8.61px] modal-box p-3 flex flex-col justify-start items-center gap-7 z-20 overflow-visible">
           <label
             htmlFor="connect-wallet-modal"
-            className="cursor-pointer self-end rounded-full bg-white p-2 border border-gray-300 hover:bg-gray-200 focus:outline-none"
+            className="cursor-pointer self-end rounded-full bg-white p-2 border border-gray-300 hover:bg-gray-200 focus:outline-none relative -top-6 -right-6"
           >
             <FiX size={20} />
           </label>
