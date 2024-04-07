@@ -9,7 +9,7 @@ import { FaGithub } from "react-icons/fa";
 function Footer() {
   return (
     <>
-      <div className="w-screen p-9 md:p-20 border-t-[1px] border-[rgba(64,59,59,1)] rounded-t-[70px] bg-[#0e0e0f]">
+      <div className="w-screen p-9 md:p-20 border-t-[1px] border-[rgba(64,59,59,1)] rounded-t-[70px] bg-[#0e0e0f] mt-auto">
         <div className="w-full flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col order-1 md:order-none my-10 md:my-0 justify-center md:justify-start text-center md:text-left md:items-start items-center ">
             <Image src="/images/logo.png" width={150} height={60} alt="logo" />
@@ -20,7 +20,9 @@ function Footer() {
           </div>
           <div className="flex flex-col justify-start items-center w-full">
             <div className="flex items-center justify-start flex-col w-full gap-1">
-              <h1 className="text-white text-xl md:text-2xl uppercase italic">Don&apos;t miss the good news</h1>
+              <h1 className="text-white text-xl md:text-2xl uppercase italic text-center">
+                Don&apos;t miss the good news
+              </h1>
               <h1 className="text-white text-3xl md:text-4xl italic text-center">Subscribe to Our Newsletter</h1>
             </div>
             <div className="py-10 gap-5 flex flex-col md:flex-row justify-start md:justify-center items-center">
