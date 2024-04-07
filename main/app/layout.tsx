@@ -29,7 +29,7 @@ export default function RootLayout({
         <AllContexts>
           <div className="min-h-screen w-screen overflow-x-hidden flex flex-col justify-start items-center gap-5 bg-[#000004]">
             <Header />
-            <div className="self-stretch overflow-auto">{children}</div>
+            <div className="self-stretch overflow-auto mt-auto">{children}</div>
             <Footer />
           </div>
         </AllContexts>
