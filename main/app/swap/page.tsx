@@ -1,5 +1,6 @@
 "use client";
 
+import { Step, StepGroup } from "@/ui/Step";
 import BorderlessArtboard from "@/ui/artboards/BorderlessArtboard";
 import Image from "next/image";
 import { FiChevronDown } from "react-icons/fi";
@@ -62,12 +63,35 @@ function Swap() {
       </div>
       <div className="w-full md:w-1/4 self-stretch">
         <BorderlessArtboard width="100%" height="100%">
-          <div className="flex flex-col justify-start items-center w-full gap-5">
+          <div className="flex flex-col justify-start items-center w-full gap-10">
             <div className="flex justify-between items-center gap-3 w-full">
               <h4 className="italic text-[#fff] font-[500] capitalize text-lg md:text-xl">swap</h4>
               <Image src="/images/hive.svg" width={60} height={60} alt="hive" />
             </div>
-            <ul className="steps steps-vertical">
+            <StepGroup activeStep={-1}>
+              <Step
+                content={
+                  <span className="text-[#cfcfcf] text-sm md:text-lg text-justify italic">
+                    Start by selecting the token to swap from and the amount you want to exchange
+                  </span>
+                }
+              />
+              <Step
+                content={
+                  <span className="text-[#cfcfcf] text-sm md:text-lg text-justify italic">
+                    Pick the token you want to exchange for
+                  </span>
+                }
+              />
+              <Step
+                content={
+                  <span className="text-[#cfcfcf] text-sm md:text-lg text-justify italic">
+                    The quotes will be ready in a moment
+                  </span>
+                }
+              />
+            </StepGroup>
+            {/* <ul className="steps steps-vertical">
               <li className="step step-warning">
                 <span className="text-[#cfcfcf] text-xs md:text-sm text-justify">
                   Start by selecting the token to swap from and the amount you want to exchange
@@ -83,7 +107,7 @@ function Swap() {
                   The quotes will be ready in a moment
                 </span>
               </li>
-            </ul>
+            </ul> */}
           </div>
         </BorderlessArtboard>
       </div>
