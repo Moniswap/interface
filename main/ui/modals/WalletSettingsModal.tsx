@@ -38,15 +38,15 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
       <input type="checkbox" className="modal-toggle" id="wallet-settings-modal" ref={ref} />
       <div className="modal" role="dialog">
         <div className="bg-[#111] rounded-[5px] modal-box p-3 flex flex-col justify-start items-center gap-7 overflow-visible">
-          <section className="flex flex-col pb-14 w-full rounded-xl bg-[#111] max-md:max-w-full z-20">
+          <section className="flex flex-col w-full rounded-xl bg-[#111] max-md:max-w-full z-20">
             <label
               htmlFor="wallet-settings-modal"
               className="cursor-pointer self-end rounded-full bg-white p-2 border border-gray-300 hover:bg-gray-200 focus:outline-none relative -top-6 -right-6"
             >
               <FiX size={20} />
             </label>
-            <div className="flex flex-col px-6 mt-4 w-full max-md:pl-5 max-md:max-w-full">
-              <div className="flex gap-1.5 items-start text-base max-md:flex-wrap">
+            <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full">
+              <div className="flex gap-1.5 items-start text-base max-md:flex-wrap pb-2">
                 <div className="self-end rounded-full bg-[#7d7d7d] p-2 w-12 h-12">
                   <BiWallet className="w-full h-full text-white" />
                 </div>
@@ -69,7 +69,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                 </div>
               </div>
             </div>
-            <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full overflow-auto h-96 md:h-[600px]">
+            <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full overflow-auto h-96">
               <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
                 <div className="flex flex-col px-4 py-5 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full">
                   <div className="italic max-md:max-w-full">
