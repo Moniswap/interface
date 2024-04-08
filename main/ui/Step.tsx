@@ -1,4 +1,4 @@
-import { useMemo, type ReactNode, Children, useEffect, ReactElement, Fragment, cloneElement } from "react";
+import { useMemo, type ReactNode, Children, useEffect, ReactElement, cloneElement } from "react";
 
 interface StepProps {
   active?: boolean;
