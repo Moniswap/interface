@@ -42,7 +42,7 @@ export default function Home() {
         <div className="mx-auto md:w-[1000px] pt-20 px-10 md:px-0">
           <div className="w-full justify-center flex flex-col items-center text-center">
             <h1 className="max-w-[21ch] text-[30.5px] md:text-[45px] flex flex-col italic text-white md:leading-[50px] leading-[45px]">
-              BERA PACKS WHITELIST MINT REGISTRATION TEST
+              BERA PACKS WHITELIST MINT REGISTRATION
             </h1>
             <h1 className="capitalize text-[--inverted-text] text-sm py-2">SECURE YOUR SPOT!</h1>
             <Image
