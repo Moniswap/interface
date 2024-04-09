@@ -79,10 +79,8 @@ function Header() {
         <div className={`flex h-[70px] md:h-[70px] ${isFixed ? " bg-[#000] fixed top-0 z-50 w-full" : ""} `}>
           <div className="w-full mx-[20px] flex items-center justify-between border-[rgba(43,43,43,1)]  border-b-2">
             <div className="flex items-center justify-start w-1/3">
-              <Link href={"/"}>
-                <Image src="/images/logo.png" width={150} height={60} alt="logo" className="hidden md:flex" />
-                <Image src="/images/md_logo.png" width={40} height={40} alt="logo" className="flex md:hidden" />
-              </Link>
+              <Image src="/images/logo.png" width={150} height={60} alt="logo" className="hidden md:flex" />
+              <Image src="/images/md_logo.png" width={40} height={40} alt="logo" className="flex md:hidden" />
             </div>
             <div className="flex items-center justify-center w-1/2 hidden">
               <ul

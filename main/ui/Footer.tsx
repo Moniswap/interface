@@ -12,7 +12,7 @@ function Footer() {
       <div className="w-screen p-9 md:p-20 border-t-[1px] border-[rgba(64,59,59,1)] rounded-t-[70px] bg-[#0e0e0f] mt-auto">
         <div className="w-full flex flex-col md:flex-row justify-between items-center">
           <div className="flex flex-col order-1 md:order-none my-10 md:my-0 justify-center md:justify-start text-center md:text-left md:items-start items-center w-1/3">
-            <Image src="/images/logo.png" width={150} height={60} alt="logo" />
+            <Image src="/images/logo.png" width={150} height={60} alt="logo" className="pb-10 md:pb-0" />
             <div className="md:py-20 flex flex-col justify-start items-center gap-3">
               <h1 className="uppercase text-[#fff] italic text-xl md:text-2xl">audited by</h1>
               <Image src="/images/certik.png" width={200} height={70} alt="logo" />
@@ -57,12 +57,20 @@ function Footer() {
                 <h1 className="text-white text-lg md:text-xl italic font-[600]">Project &amp; Developers</h1>
                 <ul className="text-sm text-white flex flex-col gap-3 justify-center items-center md:justify-start md:items-start">
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="https://docs.google.com/forms/d/e/1FAIpQLScIIy-7PDs9lj3V1X4h6Duj9PFELwl-4e1OuorWmLTMcHSJjw/viewform" target="_blank">
+                    <Link
+                      className="capitalize"
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScIIy-7PDs9lj3V1X4h6Duj9PFELwl-4e1OuorWmLTMcHSJjw/viewform"
+                      target="_blank"
+                    >
                       submit your project
                     </Link>
                   </li>
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="https://docs.google.com/forms/d/e/1FAIpQLScf_Mt7-Dic52w9ufljO0k-qoHAlwQzb73PdrMPmri6yBZImg/viewform" target="_blank">
+                    <Link
+                      className="capitalize"
+                      href="https://docs.google.com/forms/d/e/1FAIpQLScf_Mt7-Dic52w9ufljO0k-qoHAlwQzb73PdrMPmri6yBZImg/viewform"
+                      target="_blank"
+                    >
                       partner
                     </Link>
                   </li>

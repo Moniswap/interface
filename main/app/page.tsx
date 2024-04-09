@@ -99,7 +99,7 @@ export default function Home() {
               <div className="mt-4 text-base italic">--------</div>
               <div className="flex flex-col pt-4 pb-2 mt-11 text-sm text-center whitespace-nowrap rounded-none border-t border-solid border-[#2b2b2b]">
                 <button
-                  className="justify-center px-14 py-3.5 italic bg-neutral-700 rounded-[162.369px] bg-[#FEA622]"
+                  className="justify-center px-14 py-3.5 italic rounded-[162.369px] bg-[#FEA622] bg-neutral-700"
                   onClick={() => {
                     console.log("Register");
                   }}
