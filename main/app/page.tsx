@@ -3,7 +3,7 @@ import Image from "next/image";
 import { FiChevronDown } from "react-icons/fi";
 import { useEffect, useState } from "react";
 
-function CountdownTimer({ targetDate }: {targetDate: Date}) {
+function CountdownTimer({ targetDate }: { targetDate: Date }) {
   const [remainingTime, setRemainingTime] = useState(calculateRemainingTime());
 
   useEffect(() => {
@@ -26,7 +26,9 @@ function CountdownTimer({ targetDate }: {targetDate: Date}) {
   }
 
   return (
-    <>{remainingTime.days}D : {remainingTime.hours}H : {remainingTime.minutes}M : {remainingTime.seconds}S</>
+    <>
+      {remainingTime.days}D : {remainingTime.hours}H : {remainingTime.minutes}M : {remainingTime.seconds}S
+    </>
   );
 }
 
@@ -88,9 +90,7 @@ export default function Home() {
           <div className="flex flex-col px-5 pt-3.5 w-full font-medium text-white rounded-3xl bg-[#1E1E1E] max-w-[420px]">
             <div className="flex gap-3.5 items-start text-base text-center">
               <img loading="lazy" src="/images/hive.svg" className="shrink-0 aspect-[1.14] w-[52px]" />
-              <div className="mt-5 italic">
-                Partcipate in the Bera Packs NFT Whitelist Mint Lottery
-              </div>
+              <div className="mt-5 italic">Partcipate in the Bera Packs NFT Whitelist Mint Lottery</div>
               <img loading="lazy" src="/images/hive.svg" className="shrink-0 aspect-[1.14] w-[52px]" />
             </div>
             <div className="self-center mt-5 text-xs text-center text-green-500">Open to everyone.</div>
