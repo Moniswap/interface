@@ -25,7 +25,7 @@ function Footer() {
               </h1>
               <h1 className="text-white text-3xl md:text-4xl italic text-center">Subscribe to Our Newsletter</h1>
             </div>
-            <div className="py-10 gap-5 flex flex-col md:flex-row justify-start md:justify-center items-center">
+            <div className="py-10 gap-5 w-full flex flex-col md:flex-row justify-start md:justify-center items-center">
               <input
                 type="text"
                 name=""
