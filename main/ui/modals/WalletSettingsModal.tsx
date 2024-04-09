@@ -165,7 +165,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     </div>
                   </div>
                   <button
-                    className="justify-center items-center px-16 py-7 mt-5 text-sm italic font-bold text-center rounded-xl border border-solid bg-[#1E1E1E] border-zinc-800 text-stone-300 max-md:px-5 max-md:max-w-full"
+                    className="hover:bg-zinc-700 justify-center items-center px-16 py-7 mt-5 text-sm italic font-bold text-center rounded-xl border border-solid bg-[#1E1E1E] border-zinc-800 text-stone-300 max-md:px-5 max-md:max-w-full"
                     onClick={() => {
                       disconnect({ connector });
 

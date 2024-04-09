@@ -11,14 +11,14 @@ function Footer() {
     <>
       <div className="w-screen p-9 md:p-20 border-t-[1px] border-[rgba(64,59,59,1)] rounded-t-[70px] bg-[#0e0e0f] mt-auto">
         <div className="w-full flex flex-col md:flex-row justify-between items-center">
-          <div className="flex flex-col order-1 md:order-none my-10 md:my-0 justify-center md:justify-start text-center md:text-left md:items-start items-center ">
+          <div className="flex flex-col order-1 md:order-none my-10 md:my-0 justify-center md:justify-start text-center md:text-left md:items-start items-center w-1/3">
             <Image src="/images/logo.png" width={150} height={60} alt="logo" />
             <div className="md:py-20 flex flex-col justify-start items-center gap-3">
               <h1 className="uppercase text-[#fff] italic text-xl md:text-2xl">audited by</h1>
               <Image src="/images/certik.png" width={200} height={70} alt="logo" />
             </div>
           </div>
-          <div className="flex flex-col justify-start items-center w-full">
+          <div className="flex flex-col justify-start items-center w-1/2">
             <div className="flex items-center justify-start flex-col w-full gap-1">
               <h1 className="text-white text-xl md:text-2xl uppercase italic text-center">
                 Don&apos;t miss the good news
@@ -42,12 +42,12 @@ function Footer() {
                 <h1 className="text-white text-lg md:text-xl italic font-[600]">Company</h1>
                 <ul className="text-sm text-white flex flex-col gap-3 justify-center items-center md:justify-start md:items-start">
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="/">
+                    <Link className="capitalize" href="https://docs.moniswap.xyz/" target="_blank">
                       about moniswap
                     </Link>
                   </li>
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="/">
+                    <Link className="capitalize" href="https://docs.moniswap.xyz/" target="_blank">
                       documentation
                     </Link>
                   </li>
@@ -57,12 +57,12 @@ function Footer() {
                 <h1 className="text-white text-lg md:text-xl italic font-[600]">Project &amp; Developers</h1>
                 <ul className="text-sm text-white flex flex-col gap-3 justify-center items-center md:justify-start md:items-start">
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="/">
+                    <Link className="capitalize" href="https://docs.google.com/forms/d/e/1FAIpQLScIIy-7PDs9lj3V1X4h6Duj9PFELwl-4e1OuorWmLTMcHSJjw/viewform" target="_blank">
                       submit your project
                     </Link>
                   </li>
                   <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="/">
+                    <Link className="capitalize" href="https://docs.google.com/forms/d/e/1FAIpQLScf_Mt7-Dic52w9ufljO0k-qoHAlwQzb73PdrMPmri6yBZImg/viewform" target="_blank">
                       partner
                     </Link>
                   </li>
@@ -70,9 +70,9 @@ function Footer() {
               </div>
             </div>
           </div>
-          <div className="order-2 md:order-none">
+          <div className="order-2 md:order-none w-1/3 flex justify-center md:justify-end">
             <Link
-              href="/swap"
+              href=""
               className="rounded-full bg-gradient-to-br from-yellow-400 to-orange-500 p-5 w-[100px] h-[100px] flex items-center justify-center text-center flex-col gap-3 text-[12px] text-white my-5 leading-tight"
             >
               <PiRocket color="#fff" size={30} />
@@ -115,7 +115,11 @@ function Footer() {
             >
               <FaGithub className="w-[25px] h-[25px]" color="#fff" />
             </a>
-            <a className="bg-[#000] btn btn-ghost btn-square p-3 rounded-[5px]">
+            <a
+              href="https://moniswap.medium.com"
+              target="_blank"
+              className="bg-[#000] btn btn-ghost btn-square p-3 rounded-[5px]"
+            >
               <FaMedium className="w-[25px] h-[25px]" color="#fff" />
             </a>
           </div>

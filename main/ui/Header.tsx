@@ -84,7 +84,7 @@ function Header() {
                 <Image src="/images/md_logo.png" width={40} height={40} alt="logo" className="flex md:hidden" />
               </Link>
             </div>
-            <div className="flex items-center justify-center w-1/2">
+            <div className="flex items-center justify-center w-1/2 hidden">
               <ul
                 className={`md:flex gap-8 text-sm font-[400] ${
                   isConnected ? "justify-around" : "justify-center"
@@ -234,7 +234,7 @@ function Header() {
                 </button>
               ) : (
                 <button
-                  className="btn btn-sm btn-ghost btn-square bg-[#1e1e1e] text-lg font-[400] rounded-[5px] p-[2px] cursor-pointer md:hidden flex transition-all delay-75"
+                  className="btn btn-sm btn-ghost btn-square bg-[#1e1e1e] text-lg font-[400] rounded-[5px] p-[2px] cursor-pointer md:hidden flex transition-all delay-75 hidden"
                   onClick={() => setShowDrawer(true)}
                 >
                   <RiMenu3Fill color="#8c8c8c" />
