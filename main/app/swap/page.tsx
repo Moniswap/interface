@@ -8,7 +8,7 @@ import { TbArrowsUpDown } from "react-icons/tb";
 
 function Swap() {
   return (
-    <div className="w-full flex flex-col md:flex-row justify-start md:justify-center items-center gap-5 px-3 my-6 md:my-16">
+    <div className="w-full flex flex-col md:flex-row justify-start md:justify-center items-center gap-5 px-3 my-6 md:my-40">
       <div className="w-full md:w-1/3 self-stretch">
         <BorderlessArtboard width="100%" height="100%">
           <div className="flex flex-col justify-start items-center w-full gap-12 py-4">

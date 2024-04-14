@@ -2,6 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import { persistStore, persistReducer } from "redux-persist";
 import themesReducer from "./slices/themeSlice";
 import walletSettingsReducer from "./slices/walletSettingsSlice";
+import tokensReducer from "./slices/tokensSlice";
 
 import storage from "./storage";
 
@@ -12,12 +13,14 @@ const persistConfig = {
 
 const persistedThemeReducer = persistReducer(persistConfig, themesReducer);
 const persistedWalletSettingsReducer = persistReducer(persistConfig, walletSettingsReducer);
+const persistedTokensReducer = persistReducer(persistConfig, tokensReducer);
 
 export const store = configureStore({
   devTools: process.env.NODE_ENV !== "production",
   reducer: {
     theme: persistedThemeReducer,
-    wallet: persistedWalletSettingsReducer
+    wallet: persistedWalletSettingsReducer,
+    tokens: persistedTokensReducer
   },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
