@@ -8,7 +8,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BiChevronUp } from "react-icons/bi";
 import { FiChevronDown, FiChevronUp, FiSettings, FiX } from "react-icons/fi";
 import { RiMenu3Fill } from "react-icons/ri";
-import { useChains, useChainId, useSwitchChain, useAccount, useDisconnect } from "wagmi";
+import { useChains, useChainId, useSwitchChain, useAccount } from "wagmi";
 import WalletSettingsModal from "@/ui/modals/WalletSettingsModal";
 import WalletConnectModal from "@/ui/modals/WalletConnectModal";
 import { customEllipsize } from "@/helpers/utils";

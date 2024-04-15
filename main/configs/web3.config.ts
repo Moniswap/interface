@@ -1,10 +1,10 @@
 import { createClient } from "viem";
 import { http, createConfig } from "wagmi";
-import { berachainTestnet, sepolia } from "wagmi/chains";
+import { berachainTestnet, bscTestnet, mainnet } from "wagmi/chains";
 import { walletConnect, injected, coinbaseWallet, safe } from "wagmi/connectors";
 
 export const config = createConfig({
-  chains: [berachainTestnet, sepolia],
+  chains: process.env.NETWORK === "mainnet" ? [mainnet] : [bscTestnet, berachainTestnet],
   multiInjectedProviderDiscovery: false,
   connectors: [
     injected({ target: "metaMask" }),

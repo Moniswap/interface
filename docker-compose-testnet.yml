@@ -1,0 +1,21 @@
+version: "3.3"
+services:
+  server:
+    container_name: moniswap-server-testnet
+    hostname: localhost
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    networks:
+      - moniswap-testnet
+  proxy:
+    container_name: moniswap-proxy-testnet
+    hostname: localhost
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - moniswap-testnet
+networks:
+  moniswap-testnet:
+    external: false

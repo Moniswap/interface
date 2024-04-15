@@ -2,7 +2,8 @@ import { toHex } from "viem";
 
 export const __CHAIN_IDS__ = {
   bera_testnet: 80085,
-  sepolia: 11155111
+  sepolia: 11155111,
+  bsc_testnet: 97
 };
 
 export const __CHAIN_INFO__ = {
@@ -16,6 +17,12 @@ export const __CHAIN_INFO__ = {
     name: "Ethereum Sepolia",
     image: "/images/ethereum.svg",
     chainIDHex: toHex(__CHAIN_IDS__.sepolia),
+    isTestnet: true
+  },
+  [__CHAIN_IDS__.bsc_testnet]: {
+    name: "BSC Testnet",
+    image: "/images/smartchain.svg",
+    chainIDHex: toHex(__CHAIN_IDS__.bsc_testnet),
     isTestnet: true
   }
 };
@@ -54,7 +61,8 @@ export const __RPCS__ = {
     { serviceName: "1RPC", url: "https://1rpc.io/sepolia" },
     { serviceName: "Public Node", url: "https://ethereum-sepolia-rpc.publicnode.com" },
     { serviceName: "Blast API", url: "https://eth-sepolia.public.blastapi.io" }
-  ]
+  ],
+  [__CHAIN_IDS__.bsc_testnet]: [{ serviceName: "Ankr", url: "https://rpc.ankr.com/bsc_testnet_chapel" }]
 };
 
 export const __STRINGS__ = {

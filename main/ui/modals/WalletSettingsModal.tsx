@@ -1,9 +1,7 @@
 /* eslint-disable react/display-name */
 import * as React from "react";
-import Image from "next/image";
-import { forwardRef, useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useAccount, useConfig, useConnect, useBalance, useDisconnect, useChainId } from "wagmi";
+import { forwardRef } from "react";
+import { useAccount, useBalance, useDisconnect, useChainId } from "wagmi";
 import { FiX } from "react-icons/fi";
 import { customEllipsize } from "@/helpers/utils";
 import { BiCopy, BiWallet } from "react-icons/bi";
