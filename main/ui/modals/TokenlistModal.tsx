@@ -27,29 +27,25 @@ const ListItem: React.FC<ListItemProps> = ({ tokenAddress, disabled, imgSrc, tok
   return (
     <button
       disabled={disabled}
-      className={`w-full ${
-        disabled ? "bg-[#1e1e1e]" : "hover:bg-zinc-700"
-      } flex justify-between items-center gap-4 py-2 px-2 rounded-lg`}
+      className="w-full btn-ghost flex justify-between items-center gap-4 py-2"
       onClick={onItemPressed}
     >
       <div className="flex justify-center items-center gap-2 md:gap-4">
         <Image src={imgSrc} alt={tokenSymbol} width={60} height={60} className="rounded-full" />
         <div className="flex flex-col justify-start items-start gap-3 md:gap-4 self-stretch">
-          <h3 className="uppercase font-[700] italic text-lg md:text-xl text-[#fff]">{tokenSymbol}</h3>
-          <span className="text-[#7d7d7d] font-[400] italic text-sm md:text-lg">
-            {customEllipsize(tokenAddress, 5, 5)}
-          </span>
+          <h3 className="uppercase font-[700]  text-lg md:text-xl text-[#fff]">{tokenSymbol}</h3>
+          <span className="text-[#7d7d7d] font-[400]  text-sm md:text-lg">{customEllipsize(tokenAddress, 5, 5)}</span>
         </div>
       </div>
-      <div className="flex flex-col justify-start items-end gap-3 md:gap-4 self-stretch">
+      <div className="flex flex-col justify-start items-start gap-3 md:gap-4 self-stretch">
         {isLoading ? (
           <span className="loading loading-spinner loading-sm md:loading-md text-[#fff]"></span>
         ) : (
-          <h3 className="uppercase font-[500] italic text-lg md:text-xl text-[#cfcfcf]">
+          <h3 className="uppercase font-[700]  text-lg md:text-xl text-[#cfcfcf]">
             {!isError ? balance.toPrecision(4) : 0}
           </h3>
         )}
-        <span className="text-[#7d7d7d] font-[400] italic text-sm md:text-lg">$0.0025</span>
+        <span className="text-[#7d7d7d] font-[400]  text-sm md:text-lg">$0.0025</span>
       </div>
     </button>
   );
@@ -60,13 +56,11 @@ const TokenlistModal = forwardRef<HTMLInputElement, ModalProps>(({ close, onSing
   const chainId = useChainId();
   const tkn = useSelector((state: RootState) => state.tokens);
   const tknStateData = React.useMemo(() => tkn[chainId], [chainId, tkn]);
-
-  const [searchValue, setSearchValue] = React.useState("");
   return (
     <>
       <input type="checkbox" className="modal-toggle" id={modalId} ref={ref} />
       <div className="modal" role="dialog">
-        <div className="bg-[#111] rounded-[9.74px] modal-box p-5 flex flex-col justify-start items-center gap-7 overflow-visible w-[90%] md:w-1/2">
+        <div className="bg-[#111] rounded-[5px] modal-box p-3 flex flex-col justify-start items-center gap-7 overflow-visible">
           <label
             htmlFor={modalId}
             className="cursor-pointer self-end rounded-full bg-white p-2 border border-gray-300 hover:bg-gray-200 focus:outline-none relative -top-6 -right-6"
@@ -78,44 +72,35 @@ const TokenlistModal = forwardRef<HTMLInputElement, ModalProps>(({ close, onSing
             <FiSearch size={20} color="#fff" />
             <input
               type="text"
-              value={searchValue}
-              onChange={e => setSearchValue(e.target.value)}
               className="bg-transparent w-full text-[#7d7d7d] py-1 outline-none"
               placeholder="WETH, USDC, 0x..."
             />
           </div>
 
           <div className="w-full flex justify-between items-center gap-2">
-            <h4 className="text-[#7d7d7d] italic font-[400] text-sm md:text-lg capitalize">
+            <h4 className="text-[#7d7d7d]  font-[400] text-sm md:text-lg capitalize">
               {tknStateData.tokenlist.length} tokens
             </h4>
-            <h4 className="text-[#7d7d7d] italic font-[400] text-sm md:text-lg capitalize">balance</h4>
+            <h4 className="text-[#7d7d7d]  font-[400] text-sm md:text-lg capitalize">balance</h4>
           </div>
-          <div className="h-[0.8px] bg-[#2b2b2b] w-full" />
+          <div className="h-[1px] bg-[#7d7d7d] w-full" />
 
           <div className="flex flex-col w-full overflow-auto h-96 md:h-[600px] gap-2">
-            {tknStateData.tokenlist
-              .filter(
-                ti =>
-                  ti.address.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-                  ti.symbol.toLowerCase().startsWith(searchValue.toLowerCase()) ||
-                  ti.name.toLowerCase().startsWith(searchValue.toLowerCase())
-              )
-              .map((tk, index) => (
-                <ListItem
-                  imgSrc={tk.logoURI}
-                  tokenSymbol={tk.symbol}
-                  tokenAddress={tk.address}
-                  disabled={
-                    tknStateData.firstSelectedToken === tk.address || tknStateData.secondSelectedToken === tk.address
-                  }
-                  key={`${tk.address}-${index}`}
-                  onItemPressed={() => {
-                    onSingleItemClick(tk.address);
-                    if (close) close();
-                  }}
-                />
-              ))}
+            {tknStateData.tokenlist.map((tk, index) => (
+              <ListItem
+                imgSrc={tk.logoURI}
+                tokenSymbol={tk.symbol}
+                tokenAddress={tk.address}
+                disabled={
+                  tknStateData.firstSelectedToken === tk.address || tknStateData.secondSelectedToken === tk.address
+                }
+                key={`${tk.address}-${index}`}
+                onItemPressed={() => {
+                  onSingleItemClick(tk.address);
+                  if (close) close();
+                }}
+              />
+            ))}
           </div>
         </div>
       </div>

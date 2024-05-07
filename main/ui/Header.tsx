@@ -19,7 +19,7 @@ const ActiveLink: React.FC<LinkProps & { children: any }> = ({ href, children, .
     <Link
       {...props}
       href={href}
-      className={`flex justify-start rounded-[5px] w-full items-center gap-3 px-2 py-2 italic ${
+      className={`flex justify-start rounded-[5px] w-full items-center gap-3 px-2 py-2  ${
         pathname.startsWith(href.toString()) ? "font-[500] text-[#fff]" : "text-[#cfcfcf] font-[400]"
       }`}
     >
@@ -34,7 +34,7 @@ const ActiveFloatingLink: React.FC<LinkProps & { children: any }> = ({ href, chi
     <Link
       {...props}
       href={href}
-      className={`rounded-[15px] w-full py-3 px-3 bg-[--border] italic ${
+      className={`rounded-[15px] w-full py-3 px-3 bg-[--border]  ${
         pathname.startsWith(href.toString())
           ? "border-l-[--border-left-active-bg] text-[#fff] font-[500]"
           : "text-[#cfcfcf] font-[400]"
@@ -122,7 +122,7 @@ function Header() {
                       >
                         <summary
                           role="button"
-                          className="btn m-1 outline-none h-fit border-0 capitalize btn-ghost text-[#cfcfcf] text-lg italic"
+                          className="btn m-1 outline-none h-fit border-0 capitalize btn-ghost text-[#cfcfcf] text-lg "
                         >
                           more {!showMore ? <FiChevronDown color="#cfcfcf" /> : <FiChevronUp color="#cfcfcf" />}
                         </summary>

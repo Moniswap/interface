@@ -64,8 +64,8 @@ const tokensSlice = createSlice({
       .addCase(loadTokenList.fulfilled, (state, action) => {
         state[action.meta.arg] = {
           tokenlist: action.payload,
-          firstSelectedToken: action.payload[0].address,
-          secondSelectedToken: action.payload[1].address
+          firstSelectedToken: action.payload?.[0]?.address,
+          secondSelectedToken: action.payload?.[1]?.address
         };
       })
       .addCase(loadTokenList.rejected, (state, action) => {

@@ -14,16 +14,14 @@ function Footer() {
           <div className="flex flex-col order-1 md:order-none my-10 md:my-0 justify-center md:justify-start text-center md:text-left md:items-start items-center ">
             <Image src="/images/logo.png" width={150} height={60} alt="logo" />
             <div className="md:py-20 flex flex-col justify-start items-center gap-3">
-              <h1 className="uppercase text-[#fff] italic text-xl md:text-2xl">audited by</h1>
+              <h1 className="uppercase text-[#fff]  text-xl md:text-2xl">audited by</h1>
               <Image src="/images/certik.png" width={200} height={70} alt="logo" />
             </div>
           </div>
           <div className="flex flex-col justify-start items-center w-full">
             <div className="flex items-center justify-start flex-col w-full gap-1">
-              <h1 className="text-white text-xl md:text-2xl uppercase italic text-center">
-                Don&apos;t miss the good news
-              </h1>
-              <h1 className="text-white text-3xl md:text-4xl italic text-center">Subscribe to Our Newsletter</h1>
+              <h1 className="text-white text-xl md:text-2xl uppercase  text-center">Don&apos;t miss the good news</h1>
+              <h1 className="text-white text-3xl md:text-4xl  text-center">Subscribe to Our Newsletter</h1>
             </div>
             <div className="py-10 gap-5 flex flex-col md:flex-row justify-start md:justify-center items-center">
               <input
@@ -39,14 +37,14 @@ function Footer() {
             </div>
             <div className="flex flex-col md:flex-row justify-start items-center gap-10 md:gap-48 w-full md:justify-center">
               <div className="flex flex-col justify-center items-center gap-3 md:justify-start md:items-start">
-                <h1 className="text-white text-lg md:text-xl italic font-[600]">Company</h1>
+                <h1 className="text-white text-lg md:text-xl  font-[600]">Company</h1>
                 <ul className="text-sm text-white flex flex-col gap-3 justify-center items-center md:justify-start md:items-start">
-                  <li className="pb-2 text-sm md:text-lg italic">
+                  <li className="pb-2 text-sm md:text-lg ">
                     <Link className="capitalize" href="/">
                       about moniswap
                     </Link>
                   </li>
-                  <li className="pb-2 text-sm md:text-lg italic">
+                  <li className="pb-2 text-sm md:text-lg ">
                     <Link className="capitalize" href="/">
                       documentation
                     </Link>
@@ -54,14 +52,14 @@ function Footer() {
                 </ul>
               </div>
               <div className="flex flex-col justify-center items-center gap-3 md:justify-start md:items-start">
-                <h1 className="text-white text-lg md:text-xl italic font-[600]">Project &amp; Developers</h1>
+                <h1 className="text-white text-lg md:text-xl  font-[600]">Project &amp; Developers</h1>
                 <ul className="text-sm text-white flex flex-col gap-3 justify-center items-center md:justify-start md:items-start">
-                  <li className="pb-2 text-sm md:text-lg italic">
-                    <Link className="capitalize" href="/">
+                  <li className="pb-2 text-sm md:text-lg ">
+                    <a className="capitalize" href="/">
                       submit your project
-                    </Link>
+                    </a>
                   </li>
-                  <li className="pb-2 text-sm md:text-lg italic">
+                  <li className="pb-2 text-sm md:text-lg ">
                     <Link className="capitalize" href="/">
                       partner
                     </Link>
@@ -82,7 +80,7 @@ function Footer() {
         </div>
         <div className="flex justify-between items-center mt-10 flex-col-reverse md:flex-row w-full gap-7">
           <div className="flex">
-            <h1 className="text-sm md:text-lg italic text-[#cfcfcf] text-center">
+            <h1 className="text-sm md:text-lg  text-[#cfcfcf] text-center">
               Copyright &copy; 2024 Moniswap. All rights reserved.
             </h1>
           </div>

@@ -51,7 +51,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                 <div className="flex flex-col grow shrink-0 self-start basis-0 w-fit max-md:max-w-full">
                   <div className="flex gap-5 justify-between items-start w-full font-medium whitespace-nowrap text-stone-300 max-md:flex-wrap max-md:max-w-full">
                     <div className="flex gap-2 self-end items-center">
-                      <div className="grow italic">{customEllipsize(address as string, 6, 4)}</div>
+                      <div className="grow ">{customEllipsize(address as string, 6, 4)}</div>
                       <button
                         onClick={() => {
                           navigator.clipboard.writeText(address as string);
@@ -61,7 +61,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                       </button>
                     </div>
                   </div>
-                  <div className="italic text-zinc-500 max-md:max-w-full">
+                  <div className=" text-zinc-500 max-md:max-w-full">
                     Balance: {`${balanceData?.formatted} ${balanceData?.symbol}`}
                   </div>
                 </div>
@@ -70,19 +70,19 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
             <div className="flex flex-col px-6 w-full max-md:pl-5 max-md:max-w-full overflow-auto h-96 md:h-[600px]">
               <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
                 <div className="flex flex-col px-4 py-5 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full">
-                  <div className="italic max-md:max-w-full">
+                  <div className=" max-md:max-w-full">
                     To communicate with the network with your personal RPC, add it here and reload the page. This is
                     saved only in your browser, locally.
                     <br />
                   </div>
                   <input
                     type="text"
-                    className="justify-center items-start px-2.5 py-4 mt-5 italic rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
+                    className="justify-center items-start px-2.5 py-4 mt-5  rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
                     placeholder="RPC URL......."
                     value={rpcNode[chainId].url}
                     onChange={ev => dispatch(changeRPCNodeUrl({ chainId, value: ev.target.value }))}
                   />
-                  <div className="mt-6 italic max-md:max-w-full">
+                  <div className="mt-6  max-md:max-w-full">
                     Leave blank if you want to use the RPC provided by us.
                     <br />
                   </div>
@@ -91,14 +91,16 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
 
               <div className="flex flex-col py-3.5 mt-3.5 rounded-none border-t border-solid border-zinc-800 max-md:max-w-full">
                 <div className="flex flex-col px-4 py-6 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:max-w-full gap-3">
-                  <div className="italic max-md:max-w-full">Slippage tolerance: {slippageTolerance}%</div>
+                  <div className=" max-md:max-w-full">Slippage tolerance: {slippageTolerance}%</div>
 
                   <div className="flex justify-center items-center gap-5 border border-stone-700 rounded-xl bg-[#1e1e1e] w-full">
                     {slippageToleranceOptions.map((option, index) => (
                       <button
-                        style={{ width: `${(1 / slippageToleranceOptions.length) * 100}%` }}
+                        style={{
+                          width: `${(1 / slippageToleranceOptions.length) * 100}%`
+                        }}
                         key={index}
-                        className={`flex justify-center items-center text-center py-3 border-none font-[700] italic text-[#cfcfcf] text-sm ${
+                        className={`flex justify-center items-center text-center py-3 border-none font-[700]  text-[#cfcfcf] text-sm ${
                           index === 0 && "rounded-l-xl"
                         } ${index === slippageToleranceOptions.length - 1 && "rounded-r-xl"} ${
                           option === slippageTolerance ? "bg-[#FC8415]" : "bg-transparent"
@@ -114,7 +116,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                   </div>
                   <input
                     type="number"
-                    className="justify-center items-start px-2.5 py-4 mt-5 italic rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
+                    className="justify-center items-start px-2.5 py-4 mt-5  rounded-xl border border-solid bg-[#1E1E1E] border-stone-700 text-zinc-500 max-md:pr-5 max-md:max-w-full"
                     placeholder="Custom slippage......."
                     value={slippageTolerance}
                     onChange={ev => dispatch(changeSlippageTolerance(ev.target.valueAsNumber))}
@@ -124,18 +126,24 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
               <div className="flex z-10 flex-col pt-3 mt-2 mb-0 rounded-none border-t border-solid border-zinc-800 max-md:mb-2.5 max-md:max-w-full">
                 <div className="flex gap-5 px-4 py-3.5 text-sm rounded-xl bg-[#1E1E1E] text-stone-300 max-md:flex-wrap max-md:max-w-full">
                   <div className="flex flex-col">
-                    <div className="italic">Transaction execution deadline</div>
+                    <div className="">Transaction execution deadline</div>
                     <input
                       type="range"
                       min="1"
                       max="20"
                       value={executionDeadlineInMinutes}
                       className="range bg-[#444242] mt-4"
-                      style={{ height: "0.5rem", overflow: "inherit", "--range-shdw": "none" } as React.CSSProperties}
+                      style={
+                        {
+                          height: "0.5rem",
+                          overflow: "inherit",
+                          "--range-shdw": "none"
+                        } as React.CSSProperties
+                      }
                       onChange={ev => dispatch(changeExecutionDeadlineInMinutes(Number(ev.target.value)))}
                     />
                   </div>
-                  <div className="flex-auto self-end mt-7 italic font-bold text-right">
+                  <div className="flex-auto self-end mt-7  font-bold text-right">
                     {executionDeadlineInMinutes} minutes
                   </div>
                 </div>
@@ -144,8 +152,8 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     <div className="flex gap-5 max-md:flex-col max-md:gap-0">
                       <div className="flex flex-col w-[85%] max-md:ml-0 max-md:w-full">
                         <div className="flex flex-col text-sm max-md:mt-10">
-                          <div className="italic font-semibold text-stone-300">Allow unsafe trades</div>
-                          <div className="mt-3.5 italic text-zinc-500">
+                          <div className=" font-semibold text-stone-300">Allow unsafe trades</div>
+                          <div className="mt-3.5  text-zinc-500">
                             Enabling this will allow trading on quotes with high price impact and could lead to loss of
                             funds.
                           </div>
@@ -163,7 +171,7 @@ const WalletSettingsModal = forwardRef<HTMLInputElement, ModalProps>(({ close },
                     </div>
                   </div>
                   <button
-                    className="justify-center items-center px-16 py-7 mt-5 text-sm italic font-bold text-center rounded-xl border border-solid bg-[#1E1E1E] border-zinc-800 text-stone-300 max-md:px-5 max-md:max-w-full"
+                    className="justify-center items-center px-16 py-7 mt-5 text-sm  font-bold text-center rounded-xl border border-solid bg-[#1E1E1E] border-zinc-800 text-stone-300 max-md:px-5 max-md:max-w-full"
                     onClick={() => {
                       disconnect({ connector });
 

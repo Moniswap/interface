@@ -18,7 +18,7 @@ function Step({ active, content, customIcon, hasConnector }: StepProps) {
       <div className="flex flex-col justify-start items-center">
         <div
           className={`flex justify-center items-center py-2 px-2 rounded-[10px] bg-[#47473f] h-8 w-8 md:h-10 md:w-10 text-center ${
-            active ? "text-[#34d22c]" : "text-[#fff] font-[500] text-sm md:text-lg italic"
+            active ? "text-[#34d22c]" : "text-[#fff] font-[500] text-sm md:text-lg "
           }`}
         >
           {customIcon}

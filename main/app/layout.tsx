@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import "@/i18n";
 import AllContexts from "@/contexts/all";
-import Header from "@/ui/Header";
-import Footer from "@/ui/Footer";
+import { Footer, Header } from "@/components/layout";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,11 +24,9 @@ export default function RootLayout({
     <html lang="en" className="bg-black">
       <body className={inter.className}>
         <AllContexts>
-          <div className="min-h-screen w-screen overflow-x-hidden flex flex-col justify-start items-center gap-5 bg-[#000004]">
-            <Header />
-            <div className="self-stretch overflow-auto mt-auto">{children}</div>
-            <Footer />
-          </div>
+          <Header />
+          <div>{children}</div>
+          <Footer />
         </AllContexts>
       </body>
     </html>
