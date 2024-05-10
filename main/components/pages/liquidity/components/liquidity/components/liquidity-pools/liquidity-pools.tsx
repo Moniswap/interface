@@ -12,17 +12,11 @@ export const LiquidityPools = () => {
   return (
     <section>
       <div className='container pt-[80px] pb-8 px-5 lg:px-8 xl:px-0'>
-        <h1
-          data-aos='fade-up'
-          className='text-[25px]  leading-[30px] text-white'
-        >
+        <h1 className='text-[25px]  leading-[30px] text-white'>
           Liquidity Pools
         </h1>
         <div className='flex flex-col xl:flex-row mt-[30px] mb-[24px]'>
-          <div
-            data-aos='fade-up'
-            className='max-w-full hide_scroll overflow-x-auto xl:w-[80%]'
-          >
+          <div className='max-w-full hide_scroll overflow-x-auto xl:w-[80%]'>
             <TabFilter
               name='status'
               value={tabValue}
@@ -31,10 +25,7 @@ export const LiquidityPools = () => {
               className='w-full'
             />
           </div>
-          <div
-            data-aos='fade-up'
-            className='w-full mt-[20px] xl:mt-0  xl:w-[20%]'
-          >
+          <div className='w-full mt-[20px] xl:mt-0  xl:w-[20%]'>
             <Input
               type='search'
               placeholder='Symbol or Address'
@@ -43,7 +34,7 @@ export const LiquidityPools = () => {
           </div>
         </div>
 
-        <Table data-aos='fade-up'>
+        <Table>
           <TableHeader className='!rounded-[12.8px] bg-black-3 '>
             <TableHead className='w-auto xl:!w-[431px] rounded-l-[12.8px] pl-[32px] text-[13px] font-medium leading-[15px] '>
               LIQUIDITY POOL
@@ -63,10 +54,7 @@ export const LiquidityPools = () => {
           </TableHeader>
         </Table>
 
-        <Table
-          data-aos='fade-up'
-          className='hidden xl:inline-table rounded-[12.8px] mt-[13px] bg-black-3 overflow-hidden'
-        >
+        <Table className='hidden xl:inline-table rounded-[12.8px] mt-[13px] bg-black-3 overflow-hidden'>
           <TableBody>
             {new Array(10).fill('1').map((_, index) => (
               <TableRow key={index} />
@@ -75,7 +63,7 @@ export const LiquidityPools = () => {
         </Table>
         <div className='block xl:hidden mt-[13px] w-full px-[12px] py-[21px] bg-black-3 rounded-[12px]'>
           {new Array(10).fill('1').map((_, index) => (
-            <div data-aos='fade-up' className='pb-[31px]' key={index}>
+            <div className='pb-[31px]' key={index}>
               <div className='flex mb-[14px] border-b border-b-black-11 items-center gap-[13px]'>
                 <div className='relative flex mr-4'>
                   <Avatar

@@ -5,10 +5,7 @@ import Image from 'next/image'
 import { Props } from './types'
 
 export const Hero = ({ setPage }: Props) => (
-  <div
-    data-aos='fade-up'
-    className='w-full bg-[#1E1E1E] flex flex-col items-start xl:flex-row px-4 xl:px-8 relative justify-between xl:items-center min-h-[156px] rounded-[12.8px] '
-  >
+  <div className='w-full bg-[#1E1E1E] flex flex-col items-start xl:flex-row px-4 xl:px-8 relative justify-between xl:items-center min-h-[156px] rounded-[12.8px] '>
     <p className='text-[15.1px] mt-[32px] w-[80%] xl:w-auto text-[#FFFFFF]   font-medium leading-[18.27px] text-left'>
       Gain greater voting power and higher rewards, by locking more tokens for
       longer.

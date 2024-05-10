@@ -7,10 +7,7 @@ import { Props } from './types'
 export const Hero = ({ setPathRoute }: Props) => (
   <section className='pt-[160px]'>
     <div className='container flex flex-col xl:flex-row  gap-x-[22px] px-5 lg:px-8 xl:px-0 '>
-      <Card
-        data-aos='fade-up'
-        className=' w-full px-[13px] py-[18px] xl:px-[32px] xl:py-[21px] xl:w-[70%] relative'
-      >
+      <Card className=' w-full px-[13px] py-[18px] xl:px-[32px] xl:py-[21px] xl:w-[70%] relative'>
         <h2 className='font-medium  w-[80%] xl:w-[60%] text-[13.11px] xl:text-[15px] leading-[18px] text-white '>
           Liquidity Providers (LPs) make low-slippage swaps possibl e. Deposit
           and Stake liquidity to earn MONI.
@@ -54,7 +51,7 @@ export const Hero = ({ setPathRoute }: Props) => (
           className='object-cover absolute top-2 right-5'
         />
       </Card>
-      <Card data-aos='fade-up' className='hidden xl:block xl:w-[30%] relative'>
+      <Card className='hidden xl:block xl:w-[30%] relative'>
         <h1 className='font-medium text-[15px]  leading-[18px] text-white'>
           How it works
         </h1>

@@ -11,7 +11,7 @@ export const AmountToLockCard = () => {
   const [procent, setProcent] = useState([0])
 
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[60%]'>
+    <Card className='w-full xl:w-[60%]'>
       <h3 className='text-[15.1px]  mb-[20px] text-white font-medium leading-[18.27px]'>
         Extending lock for Lock 12337
       </h3>

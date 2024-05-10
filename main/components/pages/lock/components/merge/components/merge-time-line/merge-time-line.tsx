@@ -45,7 +45,7 @@ export const MergeTimeLine = ({ setPage }: Props) => {
   ]
 
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[40%]'>
+    <Card className='w-full xl:w-[40%]'>
       <div className='flex w-full justify-between'>
         <p className='font-medium  text-[15px] leadin-[18px] text-white'>
           Merge

@@ -3,7 +3,7 @@ import { WarningIcon } from '@/icons/warning'
 
 export const MergeCard = () => {
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[60%]'>
+    <Card className='w-full xl:w-[60%]'>
       <h3 className='text-[15.1px]  text-white font-medium leading-[18.27px]'>
         Select the Lock you want to merge
       </h3>

@@ -29,7 +29,7 @@ export const SwapCard = ({ setPathRoute }: Props) => {
   }
 
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[60%]'>
+    <Card className='w-full xl:w-[60%]'>
       <div className='flex gap-10 pb-[44px]  border-b border-black-9'>
         <div className='flex relative'>
           <Avatar size='lg' src='/images/cat.png' name='coin' />

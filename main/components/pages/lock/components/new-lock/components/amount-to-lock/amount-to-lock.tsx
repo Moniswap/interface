@@ -31,7 +31,7 @@ export const AmountToLockCard = () => {
   }
 
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[60%]'>
+    <Card className='w-full xl:w-[60%]'>
       <div className='flex justify-between text-white  mb-[29px]'>
         <p className='font-medium  text-[15px] leadin-[18px]'>Amount to lock</p>
         <p className='font-medium  text-[13px] leadin-[15px]'>

@@ -11,10 +11,7 @@ import { TABLEDATA } from '@/constants'
 
 export const Leaderboard = () => (
   <div className='container mt-[28px] mb-[120px]'>
-    <Card
-      data-aos='fade-up'
-      className='border rounded-none border-solid border-[#33332D] pt-[23px] px-[32px] pb-[42px]'
-    >
+    <Card className='border rounded-none border-solid border-[#33332D] pt-[23px] px-[32px] pb-[42px]'>
       <div className='flex flex-col xl:flex-row items-start xl:items-center justify-between'>
         <h2 className='text-white text-[18.863px] xl:text-[25px]  font-medium leading-[normal]'>
           The Leaderboard
@@ -45,7 +42,6 @@ export const Leaderboard = () => (
         <TableBody>
           {TABLEDATA.slice(0, 5).map((item, index) => (
             <TableRow
-              data-aos='fade-up'
               key={index}
               className=' text-[11.318px] border-none hover:bg-[#FF993C] overflow-hidden'
             >
@@ -63,7 +59,7 @@ export const Leaderboard = () => (
               </TableCell>
             </TableRow>
           ))}
-          <TableRow data-aos='fade-up' className='border-none'>
+          <TableRow className='border-none'>
             <TableCell
               className='text-center text-[#CFCFCF] text-[15px]  font-medium leading-[normal]'
               colSpan={4}
