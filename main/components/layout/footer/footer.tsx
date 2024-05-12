@@ -40,13 +40,13 @@ export const Footer = () => (
         <h1 className='font-medium text-[35px] leading-[42px]  text-center mt-[22px] mb-[30px] text-white'>
           Subscribe to Our Newsletter
         </h1>
-        <div className='flex flex-col xl:flex-row gap-[15px]'>
+        <div className='flex flex-col justify-center items-center xl:flex-row gap-[26px]'>
           <input
             type='text'
             placeholder='Your@email.com'
             className='outline-none border-none px-7 py-4 w-full text-white rounded-full text-[13px] bg-black-3 placeholder:text-black-8'
           />
-          <Button className='py-4 px-7 rounded-full button_linear text-[13px] font-normal text-white '>
+          <Button className='py-4 px-7 max-w-[124.41px] rounded-full button_linear text-[13px] font-normal text-white '>
             Subscribe
           </Button>
         </div>
@@ -118,7 +118,7 @@ export const Footer = () => (
             className='flex'
           />
         </Link>
-        <h3 className='text-[20px]  font-medium leading-[24px] text-white'>
+        <h3 className='text-[20px] mt-[35px] mb-[13px]  font-medium leading-[24px] text-white'>
           AUDITED BY
         </h3>
         <Image

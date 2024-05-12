@@ -5,10 +5,7 @@ import { BearIcon2 } from '@/icons'
 import Link from 'next/link'
 
 export const AboutCard = ({ setStep }: Props) => (
-  <Card
-    data-aos='fade-up'
-    className='bg-[#FABD61] text-white w-full xl:w-[40%] relative'
-  >
+  <Card className='bg-[#FABD61] text-white w-full xl:w-[40%] relative'>
     <div className='w-[143px] h-[143px] rounded-full bg-[#FFD18B] flex justify-center items-center'>
       <BearIcon2 className='w-[85px] h-[85px]' />
     </div>

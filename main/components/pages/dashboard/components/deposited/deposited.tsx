@@ -22,17 +22,13 @@ export const Deposited = () => {
     <section className='w-full '>
       <div className='container px-5 lg:px-8 xl:px-0 pt-[175px]'>
         <div className='flex justify-between w-full'>
-          <h2
-            data-aos='zoom-in'
-            className='flex gap-2 items-center text-white  16px xl:text-[25px]   font-medium leading-[30.26px]'
-          >
+          <h2 className='flex gap-2 items-center text-white  16px xl:text-[25px]   font-medium leading-[30.26px]'>
             Deposited & Staked Liquidity <QuestionIcon />{' '}
           </h2>
           <Button
             className='border border-[#1E1E1A] hover:bg-orange-1 py-[14px] px-[14px] text-[#CFCFCF]'
             icon={<CriclePlus />}
             onClick={handleAddDeposte}
-            data-aos='zoom-in'
           >
             New Deposit
           </Button>
@@ -50,7 +46,6 @@ export const Deposited = () => {
               <div className='w-full mt-[15px] rounded-xl bg-[#1E1E1E] py-[12px] px-[12px] xl:hidden'>
                 {new Array(10).fill(1).map((_, index) => (
                   <div
-                    data-aos='fade-up'
                     className='border-b pb-[18px] border-b-black'
                     key={index}
                   >

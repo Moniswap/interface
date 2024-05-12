@@ -11,10 +11,7 @@ export const LiquidityRewards = () => {
     <section className='w-full mt-[119px] '>
       <div className='container'>
         <div className='flex justify-between w-full'>
-          <h2
-            data-aos='fade-up'
-            className='flex gap-2 items-center text-white 16px xl:text-[25px]  font-medium leading-[30.26px]'
-          >
+          <h2 className='flex gap-2 items-center text-white 16px xl:text-[25px]  font-medium leading-[30.26px]'>
             Liquidity Rewards <QuestionIcon />{' '}
           </h2>
         </div>

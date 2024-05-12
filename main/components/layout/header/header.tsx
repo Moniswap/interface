@@ -36,9 +36,15 @@ export const Header = () => {
     }
   }, [menu])
 
+  useEffect(() => {
+    if (menu) {
+      setMenu(false)
+    }
+  }, [window.screen.width])
+
   return (
     <>
-      <header className='w-full z-50 h-[97px] bg-black fixed top-0 left-0'>
+      <header className='w-full z-[9999999] h-[97px] bg-black fixed top-0 left-0'>
         <div className='w-full h-full px-5 lg:px-8 xl:px-0 container flex justify-between items-center border-b border-[#2B2B2B]'>
           <Link href={'/'}>
             <Image

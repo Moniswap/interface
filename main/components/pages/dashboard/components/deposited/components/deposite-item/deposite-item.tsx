@@ -5,7 +5,7 @@ import { LikeIcon } from '@/icons'
 import { Card } from './components'
 
 export const DepositeItem = () => (
-  <TableRow data-aos='fade-up' className='border-b-black'>
+  <TableRow className='border-b-black'>
     <TableCell>
       <div className='flex'>
         <div className='flex gap-x-[15px]'>

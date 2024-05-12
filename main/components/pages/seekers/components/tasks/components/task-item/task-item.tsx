@@ -29,7 +29,6 @@ export const TaskItem = ({
 
   return (
     <Accordion
-      data-aos='fade-up'
       collapsible
       type='single'
       onClick={() => setOpen(!open)}

@@ -4,10 +4,7 @@ import { Button, Card, Input } from '@/components/common'
 export const Referral = () => {
   return (
     <div className=' container px-5 lg:px-8 xl:px-0 mt-[22px] xl:mt-[31px]'>
-      <Card
-        data-aos='fade-up'
-        className=' rounded-none pt-[26px] px-[16px] xl:px-[32px] pb-[29px] border border-[#33332D] bg-[#1E1E1E] '
-      >
+      <Card className=' rounded-none pt-[26px] px-[16px] xl:px-[32px] pb-[29px] border border-[#33332D] bg-[#1E1E1E] '>
         <h2 className='text-white text-[20px] xl:text-[25px]  font-medium leading-[normal]'>
           Refer a Friend to Multiply your Score!
         </h2>
@@ -28,10 +25,7 @@ export const Referral = () => {
           className='text-white  text-[10px] xl:text-[13px]   font-normal leading-[normal]'
         />
 
-        <div
-          data-aos='fade-up'
-          className='grid mt-[55px] gap-x-2.5 gap-y-[5px] grid-cols-1 xl:grid-cols-3'
-        >
+        <div className='grid mt-[55px] gap-x-2.5 gap-y-[5px] grid-cols-1 xl:grid-cols-3'>
           <Button className='py-[22px] border rounded-[12.796px] border-solid border-[#FC8415] !transition-all !duration-300 hover:bg-[#FC8415]   text-[#CFCFCF] text-center text-[13px]  font-normal leading-[normal]'>
             Copy referral link
           </Button>

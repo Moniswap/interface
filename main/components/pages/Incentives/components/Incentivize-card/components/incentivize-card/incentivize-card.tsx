@@ -56,7 +56,7 @@ export const IncentivezeCard = () => {
   ]
 
   return (
-    <Card data-aos='fade-up'>
+    <Card>
       <h3 className='text-[15.1px]  font-medium leading-[18.27px] text-white'>
         Incentivize
       </h3>

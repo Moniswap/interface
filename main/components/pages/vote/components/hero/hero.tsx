@@ -4,7 +4,7 @@ import { LuClock } from 'react-icons/lu'
 
 export const Hero = () => (
   <div className='container px-5 lg:px-8 xl:px-0'>
-    <Card data-aos='fade-up' className='px-[32px] relative'>
+    <Card className='px-[32px] relative'>
       <p className='text-[15.1px] mb-[19px]  font-medium leading-[18.27px] max-w-[90%] xl:max-w-[35%] text-white'>
         Voters earn a share of transaction fees and incentives for helping
         govern how emissions are distributed.

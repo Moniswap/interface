@@ -1,5 +1,4 @@
 'use client'
-
 import { WagmiProvider } from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { config as web3Config } from '@/configs/web3.config'
@@ -8,8 +7,6 @@ import { Provider as ReduxProvider, useDispatch } from 'react-redux'
 import { useEffect } from 'react'
 import { __CHAIN_IDS__ } from '@/constants'
 import { loadTokenList } from '@/configs/store/slices/tokensSlice'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
 const queryClient = new QueryClient()
 
 function InitTokenList({ children }: { children: any }) {
@@ -23,13 +20,6 @@ function InitTokenList({ children }: { children: any }) {
 }
 
 function AllContexts({ children }: { children: any }) {
-  useEffect(() => {
-    AOS.init({
-      duration: 1500,
-      once: true,
-    })
-  }, [])
-
   return (
     <ReduxProvider store={store}>
       {/* <PersistGate persistor={persistor}> */}

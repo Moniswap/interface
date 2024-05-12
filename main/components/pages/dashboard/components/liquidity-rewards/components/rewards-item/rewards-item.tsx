@@ -3,10 +3,7 @@ import { BearIcon } from '@/icons/beard'
 import { WarningIcon } from '@/icons/warning'
 
 export const VotingItem = () => (
-  <div
-    data-aos='fade-up'
-    className='w-full pl-[15px] xl:pl-[30px] mt-[26px] rounded-xl pr-[20px] pt-[25px] bg-[#1E1E1E] py-[25px]'
-  >
+  <div className='w-full pl-[15px] xl:pl-[30px] mt-[26px] rounded-xl pr-[20px] pt-[25px] bg-[#1E1E1E] py-[25px]'>
     <div className='flex flex-col xl:flex-row justify-between'>
       <div className='flex pl-[20px] items-center gap-x-[15px]'>
         <div className='relative'>

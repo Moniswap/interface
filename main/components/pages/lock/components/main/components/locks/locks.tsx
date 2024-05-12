@@ -6,16 +6,10 @@ import Link from 'next/link'
 export const Locks = ({ locks }: Props) => {
   return (
     <div className='mt-[96px]'>
-      <h1
-        data-aos='fade-up'
-        className='text-3xl gap-x-3 mb-10 text-white  font-medium gap-1 leading-[36.31px] items-center flex'
-      >
+      <h1 className='text-3xl gap-x-3 mb-10 text-white  font-medium gap-1 leading-[36.31px] items-center flex'>
         Locks <QuestionIcon />
       </h1>
-      <div
-        data-aos='fade-up'
-        className='w-full py-[53px] px-[21px] xl:px-[34px] bg-[#1E1E1E] rounded-xl'
-      >
+      <div className='w-full py-[53px] px-[21px] xl:px-[34px] bg-[#1E1E1E] rounded-xl'>
         {!locks ? (
           <p className='text-[13px]  font-normal leading-[15.73px] text-[#CFCFCF]'>
             To receive incentives and fees create a lock and vote with it.
@@ -23,10 +17,7 @@ export const Locks = ({ locks }: Props) => {
         ) : (
           <div className='flex flex-col xl:flex-row justify-between'>
             <div className='flex gap-x-[21px]'>
-              <div
-                data-aos='fade-up'
-                className='w-[50px] flex justify-center items-center h-[50px] rounded-[12.8px] bg-[#33332D] '
-              >
+              <div className='w-[50px] flex justify-center items-center h-[50px] rounded-[12.8px] bg-[#33332D] '>
                 <Image
                   src={'/images/moni.png'}
                   width={35}

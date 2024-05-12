@@ -17,7 +17,7 @@ export const RelayItem = ({ onClick }: Props) => {
   }
 
   return (
-    <div data-aos='fade-up'>
+    <div>
       <div
         onClick={handleClick}
         className='px-[25px] cursor-pointer select-none rounded-xl py-[28px] bg-[#1E1E1E] flex items-start flex-col xl:flex-row xl:items-center justify-between'

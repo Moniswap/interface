@@ -1,6 +1,6 @@
 import { Avatar } from '@/components/common'
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md'
 import { Props } from './types'
+import { DoubbleArrowRight } from '@/icons'
 
 export const LiquidityRouting = ({ to, from }: Props) => (
   <div>
@@ -8,17 +8,16 @@ export const LiquidityRouting = ({ to, from }: Props) => (
       Liquidity Routing
     </p>
     <div className='w-full h-[1px] bg-black-9 mt-5 '></div>
-    <div className='relative w-full mt-[28px]'>
+    <div className='relative w-full z-[100] mt-[28px]'>
       <div className='flex justify-between items-center'>
         <Avatar
           name={to.label || ''}
           className='w-[24px] h-[24px]'
           src={to.icon}
         />
-        <div className='relative '>
-          <div className='w-[14.83px] h-[14.83px] rounded-full text-white bg-[#9A9888] flex '>
-            <MdOutlineKeyboardArrowRight className='text-[6px]' />
-            <MdOutlineKeyboardArrowRight className='text-[6px]' />
+        <div className='relative z-[100]'>
+          <div className='w-[14.83px]  h-[14.83px] rounded-full text-white bg-[#9A9888] flex  justify-center items-center'>
+            <DoubbleArrowRight />
           </div>
           <div className='flex flex-col items-center gap-[3px] absolute left-[-35px] top-[15px]'>
             <div className='w-[1px] h-[15px] bg-black-6'></div>
@@ -34,9 +33,8 @@ export const LiquidityRouting = ({ to, from }: Props) => (
         </div>
         <Avatar name={to.label || ''} className='w-[24px] h-[24px]' />
         <div className='relative '>
-          <div className='w-[14.83px] h-[14.83px] rounded-full text-white bg-[#9A9888] flex '>
-            <MdOutlineKeyboardArrowRight className='text-[6px]' />
-            <MdOutlineKeyboardArrowRight className='text-[6px]' />
+          <div className='w-[14.83px] h-[14.83px] rounded-full text-white bg-[#9A9888] justify-center items-center flex '>
+            <DoubbleArrowRight />
           </div>
           <div className='flex flex-col items-center gap-[3px] absolute left-[-35px] top-[15px]'>
             <div className='w-[1px] h-[15px] bg-black-6'></div>
@@ -56,7 +54,7 @@ export const LiquidityRouting = ({ to, from }: Props) => (
           className='w-[24px] h-[24px]'
         />
       </div>
-      <div className='absolute top-[12px] w-full h-[1px] border-b border-dashed z-[1] '></div>
+      <div className='absolute top-[12px] w-full h-[1px] border-b border-dashed  z-[-1]'></div>
     </div>
   </div>
 )

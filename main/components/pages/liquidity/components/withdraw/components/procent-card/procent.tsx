@@ -9,7 +9,7 @@ export const ProcentCard = () => {
   const [procent, setProcent] = useState([0])
 
   return (
-    <Card data-aos='fade-up' className='w-full xl:w-[60%]'>
+    <Card className='w-full xl:w-[60%]'>
       <div className='flex gap-10 pb-[44px]  justify-between border-b border-black-9'>
         <div className='flex gap-10'>
           <div className='flex relative'>
